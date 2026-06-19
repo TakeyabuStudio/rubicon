@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>るびこんについて | Takeyabu Studio — なぜ無料で、なぜローカル完結なのか</title>
+<meta name="description" content="るびこんは Takeyabu Studio が作る、小説投稿サイト28形式のルビ記法変換ツールです。なぜ作ったのか、4つの原則（Local-first / Honest pricing / Solo operation / Open licenses）、そして無料とオープンソースにこだわる理由を紹介します。" />
+<meta name="keywords" content="るびこん,Takeyabu Studio,について,ローカル完結,オープンソース,MIT,無料,ルビ変換" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://rubicon.pages.dev/about/" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/icon-512.svg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="るびこんについて | Takeyabu Studio" />
+<meta property="og:description" content="なぜ作ったのか、4つの原則、無料とオープンソースにこだわる理由。" />
+<meta property="og:url" content="https://rubicon.pages.dev/about/" />
+<meta property="og:image" content="https://rubicon.pages.dev/ogp.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://rubicon.pages.dev/ogp.png" />
+
+<link rel="stylesheet" href="/src/styles/tokens.css" />
+<link rel="stylesheet" href="/src/styles/main.css" />
+<link rel="stylesheet" href="/src/styles/about.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "るびこんについて",
+  "url": "https://rubicon.pages.dev/about/",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Takeyabu Studio",
+    "url": "https://takeyabustudio.github.io/",
+    "description": "個人運営のソフトウェアスタジオ。ローカル完結・正直な価格・オープンライセンスを原則に、小さく鋭い道具を作る。",
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "WebApplication",
+        "name": "るびこん",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Any",
+        "license": "https://opensource.org/licenses/MIT"
+      },
+      "price": "0",
+      "priceCurrency": "JPY"
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ============================================ Header ============================================ -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="https://takeyabustudio.github.io/" class="brand">
+      <svg class="brand-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><clipPath id="rubicon-header-clip"><path d="M16,6 L26,16 L16,26 L6,16 Z"/></clipPath></defs>
+        <g clip-path="url(#rubicon-header-clip)">
+          <rect x="14" y="6" width="4" height="20" rx="2" fill="#22D3EE" opacity="0.9"/>
+          <rect x="14" y="14" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="14" y="18.5" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="9" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+          <rect x="20" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+        </g>
+        <path d="M16,6 L26,16 L16,26 L6,16 Z" fill="none" stroke="#22D3EE" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+      Takeyabu Studio
+    </a>
+    <nav class="nav">
+      <a href="/">変換ツール</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================ Hero ============================================ -->
+<section class="ab-hero">
+  <div class="container-narrow">
+    <p class="eyebrow">// About · Takeyabu Studio</p>
+    <h1 class="ab-hero-title">るびこんについて</h1>
+    <p class="ab-hero-sub">
+      るびこんは、<em>Takeyabu Studio</em> が作っている小さな道具のひとつです。小説投稿サイト28形式のルビ記法を相互変換する。ただそれだけのために、無料で、登録もなしで、あなたのブラウザの中だけで動きます。なぜそういう作りにしているのかを、ここでお話しします。
+    </p>
+  </div>
+</section>
+
+<main class="ab-main container-narrow">
+
+  <!-- なぜ作ったか -->
+  <section class="ab-section">
+    <p class="ab-section-label">// Why — なぜ作ったのか</p>
+    <h2 class="ab-section-heading">同じ原稿を、何度も手で直す手間</h2>
+    <p class="ab-p">
+      小説をいくつかの投稿サイトに上げていると、すぐに気づくことがあります。<strong>サイトごとにルビの書き方が違う</strong>のです。なろうの <code style="font-family:var(--font-mono);font-size:0.9em;color:var(--accent-cyan)">｜私《わたし》</code> は、pixivでは別の書き方になり、青空文庫ではまた違います。同じ一篇を別のサイトに出し直すたびに、本文を手で書き換えなければなりませんでした。
+    </p>
+    <p class="ab-p">
+      この作業は、創作とはまったく関係のない、ただの<strong>記号の置き換え</strong>でしかありません。機械に任せればいい仕事を、書き手が一字ずつこなしている。それなら機械にやらせよう、というのがるびこんの出発点です。派手な機能はありません。書き手が本来やらなくていいことを、肩代わりするだけの道具です。
+    </p>
+  </section>
+
+  <!-- 4原則 -->
+  <section class="ab-section">
+    <p class="ab-section-label">// Principles — 4つの原則</p>
+    <h2 class="ab-section-heading">Takeyabu Studio が守ること</h2>
+    <p class="ab-p">
+      るびこんに限らず、Takeyabu Studio が作るものはすべて、次の4つを軸にしています。
+    </p>
+    <div class="ab-principles">
+      <div class="ab-principle">
+        <div class="ab-principle-num">01</div>
+        <div class="ab-principle-en">Local-first</div>
+        <div class="ab-principle-ja">ローカル完結</div>
+        <p class="ab-principle-desc">
+          処理はできる限りあなたの端末の中で行い、データを外に出しません。るびこんの場合、入力した本文がサーバーへ送られることは一切ありません。送らないと決めているのではなく、送る経路そのものを作らない設計です。
+        </p>
+      </div>
+      <div class="ab-principle">
+        <div class="ab-principle-num">02</div>
+        <div class="ab-principle-en">Honest pricing</div>
+        <div class="ab-principle-ja">正直な価格</div>
+        <p class="ab-principle-desc">
+          要らない課金はしません。隠れた費用も、機能を人質に取るような有料化もしません。るびこんは無料で、そこに裏はありません。価格は価値に対して正直であるべきだと考えています。
+        </p>
+      </div>
+      <div class="ab-principle">
+        <div class="ab-principle-num">03</div>
+        <div class="ab-principle-en">Solo operation</div>
+        <div class="ab-principle-ja">ひとりで作る</div>
+        <p class="ab-principle-desc">
+          個人で設計し、個人で作っています。大きな組織の都合に振り回されない代わりに、判断は速く、責任の所在もはっきりしています。小回りの利く規模であることを、弱点ではなく利点として使います。
+        </p>
+      </div>
+      <div class="ab-principle">
+        <div class="ab-principle-num">04</div>
+        <div class="ab-principle-en">Open licenses</div>
+        <div class="ab-principle-ja">開かれたライセンス</div>
+        <p class="ab-principle-desc">
+          コードはオープンソースとして公開します。るびこんはMITライセンスです。中身が読めるということは、「送っていない」「保存していない」といった説明を、言葉ではなくコードで確かめられるということです。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 哲学 -->
+  <section class="ab-section">
+    <p class="ab-section-label">// Philosophy — 何を面白がっているのか</p>
+    <h2 class="ab-section-heading">高すぎる「当たり前」を壊す</h2>
+    <p class="ab-p">
+      世の中には、本来もっと安く、もっと軽くできるはずなのに、高い値段や重い仕組みが「当たり前」として居座っている領域があります。Takeyabu Studio が面白がっているのは、その<strong>当たり前を引きずり下ろすこと</strong>です。
+    </p>
+    <blockquote class="ab-tagline">
+      Software that kills the overpriced status quo.
+      <span class="ab-tagline-note">— Takeyabu Studio のタグライン</span>
+    </blockquote>
+    <p class="ab-p">
+      とはいえ、これは誰かを困らせたい話ではありません。正しい道具が安く手に入る状態を作れば、その分だけ人は自由になります。るびこんでいえば、ルビの変換に料金や登録の壁がなければ、その手前で諦めてしまう書き手が減ります。
+    </p>
+    <div class="ab-callout">
+      <p class="ab-callout-statement">
+        表現において、<em>自由とは最大の表現</em>だと考えています。
+      </p>
+      <p class="ab-callout-detail">
+        書く道具に余計な障害物があるほど、書きたい人の手は止まってしまいます。誰の原稿も覗かず、料金も求めず、コードまで開いておく。そうやって障害物を取り除くこと自体が、このスタジオの主張です。ルビの変換は手段にすぎません。本当に置いておきたいのは、書きたい人が余計なことに邪魔されず書ける状態のほうです。
+      </p>
+    </div>
+  </section>
+
+  <!-- Studioマーク -->
+  <section class="ab-section ab-studio">
+    <a href="https://takeyabustudio.github.io/" class="ab-studio-link" target="_blank" rel="noopener noreferrer" aria-label="Takeyabu Studio">
+      <svg class="ab-studio-logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><clipPath id="rubicon-about-clip"><path d="M16,6 L26,16 L16,26 L6,16 Z"/></clipPath></defs>
+        <g clip-path="url(#rubicon-about-clip)">
+          <rect x="14" y="6" width="4" height="20" rx="2" fill="#22D3EE" opacity="0.9"/>
+          <rect x="14" y="14" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="14" y="18.5" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="9" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+          <rect x="20" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+        </g>
+        <path d="M16,6 L26,16 L16,26 L6,16 Z" fill="none" stroke="#22D3EE" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+      <div class="ab-studio-text">
+        <div class="ab-studio-name">Takeyabu Studio</div>
+        <div class="ab-studio-url">takeyabustudio.github.io</div>
+      </div>
+    </a>
+  </section>
+
+  <!-- CTA -->
+  <div class="ab-cta">
+    <p class="ab-cta-title">話はここまで。あとは使うだけ。</p>
+    <p class="ab-cta-sub">考えていることは、ぜんぶ道具のほうに込めてあります。実際に動かして確かめてみてください。</p>
+    <a class="button" href="/">変換ツールを開く →</a>
+  </div>
+
+  <div class="ab-signature">
+    <span class="dot"></span>
+    <span>Local-first. Honest pricing. Solo operation. Open licenses.</span>
+  </div>
+
+</main>
+
+<!-- ============================================ Footer ============================================ -->
+<footer class="site-footer">
+  <div class="container-narrow footer-inner">
+    <div class="footer-meta">© 2026 Takeyabu Studio · MIT License</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://github.com/takeyabustudio/rubicon" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "id": "fujossy",
+  "name": "fujossy",
+  "url": "https://fujossy.jp/",
+  "ruby": { "parse": ["fujossy"], "render": "fujossy" },
+  "bouten": { "parse": ["bouten_fujossy"], "render": "bouten_fujossy" },
+  "indent": "spaces",
+  "options": {},
+  "_note": "NOTATION §2.2 #20: 記号すべて半角。ルビ ｜親文字(ルビ) / 傍点 :テキスト|。"
+}

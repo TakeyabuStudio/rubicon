@@ -1,0 +1,9 @@
+{
+  "id": "pixiv",
+  "name": "pixiv小説",
+  "url": "https://www.pixiv.net/novel/",
+  "ruby": { "parse": ["pixiv"], "render": "pixiv" },
+  "bouten": { "parse": ["bouten_pixiv"], "render": "bouten_pixiv" },
+  "indent": "spaces",
+  "options": {}
+}

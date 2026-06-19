@@ -1,0 +1,9 @@
+{
+  "id": "hameln",
+  "name": "ハーメルン",
+  "url": "https://syosetu.org/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_double"], "render": "bouten_double" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" }
+}

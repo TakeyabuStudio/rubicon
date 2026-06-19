@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>使い方ガイド | るびこん — 貼って・選んで・変換するまで</title>
+<meta name="description" content="るびこんの使い方を最初から。原稿を貼り、入力サイトを選び、出力サイトを複数選んで変換するまでの3ステップと、ルビ・傍点・字下げが各サイトの記法へどう変換されるかを、なろう形式の実例で解説します。" />
+<meta name="keywords" content="るびこん,使い方,ガイド,ルビ変換,なろう,カクヨム,pixiv,傍点,字下げ,記法変換" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://rubicon.pages.dev/guide/" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/icon-512.svg" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="使い方ガイド | るびこん" />
+<meta property="og:description" content="貼って・選んで・変換するまでの3ステップと、ルビ・傍点・字下げの変換例を解説します。" />
+<meta property="og:url" content="https://rubicon.pages.dev/guide/" />
+<meta property="og:image" content="https://rubicon.pages.dev/ogp.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://rubicon.pages.dev/ogp.png" />
+
+<link rel="stylesheet" href="/src/styles/tokens.css" />
+<link rel="stylesheet" href="/src/styles/main.css" />
+<link rel="stylesheet" href="/src/styles/guide.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "るびこんで小説原稿のルビ記法を変換する方法",
+  "description": "原稿を貼り、入力サイトを選び、出力サイトを複数選んで変換するまでの手順。",
+  "totalTime": "PT1M",
+  "estimatedCost": { "@type": "MonetaryAmount", "currency": "JPY", "value": "0" },
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "原稿を貼り、入力形式を選ぶ",
+      "text": "変換したい原稿を入力欄に貼り付け、その原稿が今どのサイトの記法で書かれているか（入力形式）を1つ選びます。"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "出力形式を選ぶ（複数可）",
+      "text": "どのサイトの記法に変換したいか（出力形式）を選びます。複数選べるので、一度に複数サイト分を作れます。"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "変換してコピーする",
+      "text": "変換ボタンを押すと、選んだ出力形式ごとに結果がカードで表示されます。必要なカードの内容をコピーして、各サイトの投稿欄に貼り付けます。"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============================================ Header ============================================ -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="https://takeyabustudio.github.io/" class="brand">
+      <svg class="brand-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><clipPath id="rubicon-header-clip"><path d="M16,6 L26,16 L16,26 L6,16 Z"/></clipPath></defs>
+        <g clip-path="url(#rubicon-header-clip)">
+          <rect x="14" y="6" width="4" height="20" rx="2" fill="#22D3EE" opacity="0.9"/>
+          <rect x="14" y="14" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="14" y="18.5" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="9" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+          <rect x="20" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+        </g>
+        <path d="M16,6 L26,16 L16,26 L6,16 Z" fill="none" stroke="#22D3EE" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+      Takeyabu Studio
+    </a>
+    <nav class="nav">
+      <a href="/">変換ツール</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================ Hero ============================================ -->
+<section class="gd-hero">
+  <div class="container-narrow">
+    <p class="eyebrow">// Guide · How to use</p>
+    <h1 class="gd-hero-title">使い方ガイド</h1>
+    <p class="gd-hero-sub">
+      やることは<em>3つだけ</em>です。原稿を貼って、形式を選んで、変換する。ルビや傍点が各サイトの記法へどう置き換わるかも、実例で見ていきます。
+    </p>
+  </div>
+</section>
+
+<main class="gd-main container-narrow">
+
+  <!-- 3ステップ -->
+  <section class="gd-section">
+    <p class="gd-section-label">// Steps — 3ステップで変換</p>
+    <h2 class="gd-section-heading">貼って、選んで、変換。</h2>
+
+    <div class="gd-steps">
+      <div class="gd-step">
+        <span class="gd-step-n">01</span>
+        <div class="gd-step-body">
+          <p class="gd-step-title">原稿を貼り、入力形式を選ぶ</p>
+          <p class="gd-step-desc">
+            変換したい原稿を入力欄に貼り付けます。次に、その原稿が<strong>いまどのサイトの記法で書かれているか</strong>を「入力形式」から1つ選びます。たとえば、なろうに投稿した本文をそのままコピーしてきたなら「小説家になろう」を選びます。
+          </p>
+        </div>
+      </div>
+
+      <div class="gd-step">
+        <span class="gd-step-n">02</span>
+        <div class="gd-step-body">
+          <p class="gd-step-title">出力形式を選ぶ（複数えらべます）</p>
+          <p class="gd-step-desc">
+            次に「どのサイトの記法に変換したいか」を選びます。ここは<strong>複数選択できます</strong>。カクヨムとpixivと青空文庫をまとめてチェックすれば、3サイト分の原稿が一度に作れます。1つだけ選んでも、もちろん構いません。
+          </p>
+        </div>
+      </div>
+
+      <div class="gd-step">
+        <span class="gd-step-n">03</span>
+        <div class="gd-step-body">
+          <p class="gd-step-title">変換して、コピーする</p>
+          <p class="gd-step-desc">
+            変換ボタンを押すと、選んだ出力形式ごとに<strong>結果がカードで表示</strong>されます。必要なカードの内容をコピーして、各サイトの投稿欄に貼り付ければ完了です。コピーもあなたの端末の中だけの操作で、どこにも送信されません。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 記法の例 -->
+  <section class="gd-section">
+    <p class="gd-section-label">// Notation — 何がどう変わるのか</p>
+    <h2 class="gd-section-heading">ルビ・傍点・字下げの変換例</h2>
+    <p class="gd-p">
+      るびこんが扱うのは、主に<strong>ルビ・傍点・字下げ</strong>の3つです。ここでは「小説家になろう」の記法を基準に、それが他サイトの記法へどう置き換わるかを見てみます。書く側が覚える必要はありません——これは「裏で何が起きているか」の説明です。
+    </p>
+
+    <div class="gd-notation">
+      <!-- ルビ -->
+      <div class="gd-note-card">
+        <div class="gd-note-name">
+          <h3>ルビ（ふりがな）</h3>
+          <span class="gd-note-tag">RUBY</span>
+        </div>
+        <p class="gd-note-desc">
+          漢字に読みを振る記法です。なろうでは縦棒 <code>｜</code> で範囲を示し、二重山括弧 <code>《　》</code> に読みを入れます。たとえば「私」に「わたし」と振るなら、こう書きます。pixivに出力すると、pixiv独自の記法に置き換わります。
+        </p>
+        <div class="gd-code-row">
+          <div class="gd-code">
+            <span class="gd-code-label">なろう（入力）</span>
+            ｜私《わたし》
+          </div>
+          <div class="gd-code-arrow">→</div>
+          <div class="gd-code">
+            <span class="gd-code-label">pixiv（出力）</span>
+            [[rb:私 &gt; わたし]]
+          </div>
+        </div>
+      </div>
+
+      <!-- 傍点 -->
+      <div class="gd-note-card">
+        <div class="gd-note-name">
+          <h3>傍点（強調の点）</h3>
+          <span class="gd-note-tag">EMPHASIS</span>
+        </div>
+        <p class="gd-note-desc">
+          文字の脇に打って強調する点です。なろうでは「親文字の数だけ中黒 <code>・</code> をルビに当てる」方式で表します。カクヨムなど二重山括弧で囲む方式のサイトへ出力すると、その形に変わります。
+        </p>
+        <div class="gd-code-row">
+          <div class="gd-code">
+            <span class="gd-code-label">カクヨム（入力）</span>
+            《《本当》》
+          </div>
+          <div class="gd-code-arrow">→</div>
+          <div class="gd-code">
+            <span class="gd-code-label">なろう（出力）</span>
+            ｜本当《・・》
+          </div>
+        </div>
+      </div>
+
+      <!-- 字下げ -->
+      <div class="gd-note-card">
+        <div class="gd-note-name">
+          <h3>字下げ（段落の頭の空き）</h3>
+          <span class="gd-note-tag">INDENT</span>
+        </div>
+        <p class="gd-note-desc">
+          行頭を全角空白で下げる、あの作法です。多くのサイトでは行頭の全角空白がそのまま字下げになります。一方、青空文庫は専用の注記でこれを表すため、青空へ出力するときは注記の形に置き換わります。
+        </p>
+        <div class="gd-code-row">
+          <div class="gd-code">
+            <span class="gd-code-label">一般サイト（入力）</span>
+            　　セリフ
+          </div>
+          <div class="gd-code-arrow">→</div>
+          <div class="gd-code">
+            <span class="gd-code-label">青空文庫（出力）</span>
+            ［＃２字下げ］セリフ
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 自動でやる -->
+  <section class="gd-section">
+    <p class="gd-section-label">// Automatic — サイトごとの違いは気にしない</p>
+    <h2 class="gd-section-heading">記法を覚えなくていい理由</h2>
+    <div class="gd-callout">
+      <p class="gd-callout-statement">
+        サイトごとの記法の違いは、<em>るびこんが全部やります</em>。
+      </p>
+      <p class="gd-callout-detail">
+        ルビ記法は28サイトで十数種類に分かれ、傍点の書き方もばらばらです。それを一つずつ覚えるのは現実的ではありません。るびこんは入力をいったん共通の内部表現に直してから、選んだ出力サイトの記法へ組み立て直します。だからあなたは「どのサイトからどのサイトへ」だけ選べばよく、記法そのものを暗記する必要はありません。どの形式がどの記法に対応するかを一覧で見たいときは <a href="/sites/">対応サイト一覧</a> をどうぞ。
+      </p>
+    </div>
+  </section>
+
+  <!-- つまずきポイント -->
+  <section class="gd-section">
+    <p class="gd-section-label">// Notes — 使うときの注意</p>
+    <h2 class="gd-section-heading">知っておくと安心な3点</h2>
+    <div class="gd-notes">
+      <div class="gd-note-item">
+        <span class="gd-note-icon">!</span>
+        <p class="gd-note-text">
+          <strong>一部サイトは傍点に対応していません。</strong>次の4サイトは公式の傍点記法を一次情報で確認できなかったため、傍点を無効にしています（ルビ・字下げは変換します）。
+          <span class="gd-sitelist"><span>Privatter</span><span>くるっぷ</span><span>魔法のiらんど</span><span>Markdown</span></span>
+          出力先にこれらを選んでいて入力に傍点があると、「傍点を削除しました」と<strong>警告</strong>が出ます。黙って消えることはありません。
+        </p>
+      </div>
+
+      <div class="gd-note-item">
+        <span class="gd-note-icon">!</span>
+        <p class="gd-note-text">
+          <strong>丸括弧ルビは初期状態ではオフです。</strong>「漢字（よみ）」のような丸括弧ルビは、本文中のふつうの丸括弧を誤ってルビと解釈する危険があるため、初期では無効です。なろう・ノベルアップ＋・ノベラボのように正式対応するサイトを入力に選び、明示的にオンにしたときだけ有効になります。
+        </p>
+      </div>
+
+      <div class="gd-note-item">
+        <span class="gd-note-icon">!</span>
+        <p class="gd-note-text">
+          <strong>対応していない記法（太字など）は外されます。</strong>るびこんが扱うのはルビ・傍点・字下げです。それ以外の装飾（太字など）が混じっていると、変換時に取り除き、何をいくつ外したかを警告で知らせます。仕上がりを見て、必要なら手で足してください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="gd-cta">
+    <p class="gd-cta-title">読むより、やったほうが早い。</p>
+    <p class="gd-cta-sub">手元の原稿を1段落だけ貼って、試してみてください。1分かかりません。</p>
+    <a class="button" href="/">変換ツールを開く →</a>
+  </div>
+
+  <div class="gd-signature">
+    <span class="dot"></span>
+    <span>Paste. Pick. Convert. — all in your browser.</span>
+  </div>
+
+</main>
+
+<!-- ============================================ Footer ============================================ -->
+<footer class="site-footer">
+  <div class="container-narrow footer-inner">
+    <div class="footer-meta">© 2026 Takeyabu Studio · MIT License</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://github.com/takeyabustudio/rubicon" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

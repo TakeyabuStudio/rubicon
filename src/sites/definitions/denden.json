@@ -1,0 +1,10 @@
+{
+  "id": "denden",
+  "name": "でんでんコンバーター",
+  "url": "https://conv.denshochan.com/",
+  "ruby": { "parse": ["denden"], "render": "denden" },
+  "bouten": { "parse": ["bouten_denden"], "render": "bouten_denden" },
+  "indent": "spaces",
+  "options": {},
+  "_note": "NOTATION §3.5: ルビ {親|ルビ}(半角バー)。傍点 *テキスト*(縦書き時圏点)。モノルビ未対応(MVP)。"
+}

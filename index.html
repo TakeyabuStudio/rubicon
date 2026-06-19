@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Primary Meta -->
+<title>るびこん | 28サイト対応・小説投稿ルビ記法一括変換ツール</title>
+<meta name="description" content="小説家になろう、カクヨム、アルファポリス、ノベルアップ＋、エブリスタなど28サイトのルビ・傍点・字下げ・空白記法を相互変換。完全無料・登録不要・ローカル処理。" />
+<meta name="keywords" content="ルビ変換,小説投稿,なろう,カクヨム,アルファポリス,ノベルアップ,エブリスタ,記法変換,ルビ,傍点" />
+<meta name="author" content="Takeyabu Studio" />
+<link rel="canonical" href="https://rubicon.pages.dev/" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/icon-512.svg" />
+
+<!-- OGP -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://rubicon.pages.dev/" />
+<meta property="og:title" content="るびこん | 28サイト対応・小説投稿ルビ記法一括変換ツール" />
+<meta property="og:description" content="28サイトのルビ・傍点記法を相互変換。完全無料・ローカル処理。" />
+<meta property="og:image" content="https://rubicon.pages.dev/ogp.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="るびこん" />
+<meta property="og:locale" content="ja_JP" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="るびこん | 28サイト対応・小説投稿ルビ記法一括変換ツール" />
+<meta name="twitter:description" content="28サイトのルビ・傍点記法を相互変換。完全無料・ローカル処理。" />
+<meta name="twitter:image" content="https://rubicon.pages.dev/ogp.png" />
+
+<!-- Robots / Theme -->
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#0A0A0B" />
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "るびこん",
+  "alternateName": "Rubicon",
+  "description": "小説投稿サイト28形式のルビ・傍点・字下げ・空白記法を相互変換するローカル完結ツール",
+  "url": "https://rubicon.pages.dev/",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Takeyabu Studio",
+    "url": "https://takeyabustudio.github.io/"
+  },
+  "license": "https://opensource.org/licenses/MIT",
+  "inLanguage": "ja"
+}
+</script>
+
+<link rel="stylesheet" href="/src/styles/tokens.css" />
+<link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+<body>
+
+
+
+<!-- ============================================
+     Header
+     ============================================ -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="https://takeyabustudio.github.io/" class="brand">
+      <svg class="brand-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <clipPath id="rubicon-header-clip">
+            <path d="M16,6 L26,16 L16,26 L6,16 Z"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#rubicon-header-clip)">
+          <rect x="14" y="6" width="4" height="20" rx="2" fill="#22D3EE" opacity="0.9"/>
+          <rect x="14" y="14" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="14" y="18.5" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="9" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+          <rect x="20" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+        </g>
+        <path d="M16,6 L26,16 L16,26 L6,16 Z" fill="none" stroke="#22D3EE" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+      Takeyabu Studio
+    </a>
+  </div>
+</header>
+
+<!-- ============================================
+     Main Content
+     ============================================ -->
+<main id="main">
+
+<!-- ============================================
+     Hero (Main left, side cards right)
+     ============================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left: Main hero -->
+      <div class="hero-main">
+        <div class="hero-icon-row">
+          <svg class="hero-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#0A0A0B"/>
+            <path d="M 14 22 L 31 26 L 31 48 L 14 44 Z" fill="none" stroke="#2DD4BF" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M 50 22 L 33 26 L 33 48 L 50 44 Z" fill="none" stroke="#2DD4BF" stroke-width="2.5" stroke-linejoin="round"/>
+            <line x1="32" y1="26" x2="32" y2="48" stroke="#2DD4BF" stroke-width="2"/>
+            <line x1="18" y1="30" x2="28" y2="32.3" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+            <line x1="18" y1="34" x2="28" y2="36.3" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+            <line x1="18" y1="38" x2="24" y2="39.4" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+            <line x1="46" y1="30" x2="36" y2="32.3" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+            <line x1="46" y1="34" x2="36" y2="36.3" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+            <line x1="46" y1="38" x2="40" y2="39.4" stroke="#2DD4BF" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+          </svg>
+          <div class="eyebrow">A NOVEL TOOL · MIT LICENSE · EST. 2026</div>
+        </div>
+        <h1>
+          るびこん
+          <span class="sub">Convert ruby across 28 sites.</span>
+        </h1>
+        <p class="hero-description">
+          小説家になろう、カクヨム、アルファポリス、ノベルアップ＋など<br>
+          28形式のルビ・傍点・字下げ・空白を、貼って・選んで・押すだけで<br>
+          相互変換を実行。
+        </p>
+        <div class="hero-meta">
+          <span class="badge badge-live">Live</span>
+          <span class="badge">v1.0</span>
+          <span class="badge">MIT License</span>
+          <span class="badge">Zero Server</span>
+        </div>
+      </div>
+
+      <!-- Right: Side cards (Privacy + Free Forever) -->
+      <div class="hero-sides">
+        <aside class="hero-side-card">
+          <div class="hero-privacy">
+            <div class="section-label" style="margin-bottom: 12px;">// Privacy</div>
+            <p class="hero-privacy-statement">
+              入力した小説は、<br>
+              <em>『あなたのブラウザの中だけ』</em>で<br>
+              処理されます。
+            </p>
+            <p class="hero-privacy-details">
+              変換はすべてクライアントサイドの JavaScript で完結します。サーバーに一切送信されません。ソースコードは GitHub で公開されており、開発者ツールから通信ゼロを直接検証できます。
+            </p>
+            <div class="hero-privacy-meta">
+              <span class="meta-dot"></span>
+              <span>Zero server. Zero tracking. Zero cookies.</span>
+            </div>
+          </div>
+        </aside>
+
+        <aside class="hero-side-card">
+          <div class="hero-free">
+            <div class="section-label" style="margin-bottom: 12px;">// Free Forever</div>
+            <p class="hero-free-statement">
+              <em>完全無料</em>。<br>
+              会員登録、必要ありません。
+            </p>
+            <ul class="hero-free-list">
+              <li><span class="check">✓</span><span>アプリのインストール不要</span></li>
+              <li><span class="check">✓</span><span>アカウント作成不要</span></li>
+              <li><span class="check">✓</span><span>メールアドレス不要</span></li>
+              <li><span class="check">✓</span><span>商用利用OK</span></li>
+              <li><span class="check">✓</span><span>使用回数制限なし</span></li>
+            </ul>
+            <div class="hero-free-meta">
+              <span class="meta-dot meta-dot-green"></span>
+              <span>MIT License · Open source</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     Converter
+     ============================================ -->
+<section class="section" id="converter">
+  <div class="container-narrow">
+    <div class="section-label">// Converter</div>
+    <h2 class="section-heading">貼って、選んで、変換。</h2>
+    <p class="section-description">
+      原稿の元になっている入力形式を選び、変換したい出力形式を複数選択してください。<br>
+      すべて同時に変換されます。
+    </p>
+
+    <div class="converter">
+      <!-- Input format selector -->
+      <div class="field">
+        <label class="field-label">Input format</label>
+        <div class="site-selector" id="input-selector"></div>
+      </div>
+
+      <!-- Input textarea -->
+      <div class="field">
+        <label class="field-label">Manuscript</label>
+        <textarea
+          class="textarea"
+          id="manuscript"
+          aria-label="原稿入力"
+          aria-describedby="char-counter"
+          placeholder="ここに原稿を貼り付けてください。&#10;&#10;例: 私は|本《ほん》を読んだ。それは《《本当に》》面白かった。"
+        >私は|本《ほん》を読んだ。それは《《本当に》》面白かった。
+
+　暗闇の中で、|彼女《かのじょ》は囁いた。
+「終わりは、始まりよ。」</textarea>
+      </div>
+
+      <!-- Output format selector -->
+      <div class="field">
+        <div class="field-header">
+          <label class="field-label">Output formats (multi-select)</label>
+          <div class="bulk-actions">
+            <button class="button button-ghost button-mini" type="button" data-action="select-all">Select all</button>
+            <button class="button button-ghost button-mini" type="button" data-action="clear-all">Clear</button>
+          </div>
+        </div>
+        <div class="site-multiselect" id="output-selector"></div>
+      </div>
+
+      <!-- Footer of converter: counter, action, hint -->
+      <div class="converter-footer">
+        <div class="converter-meta">
+          <span class="char-counter" id="char-counter">0 / 500,000</span>
+          <span class="kbd-hint">
+            <kbd>Ctrl</kbd> + <kbd>Enter</kbd> でも変換できます
+          </span>
+        </div>
+        <button class="button button-primary" id="convert-button" type="button">
+          <span class="button-label">Convert →</span>
+          <span class="button-spinner" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <!-- Inline error / warning area -->
+      <div class="converter-alerts" id="converter-alerts" aria-live="polite" aria-atomic="true">
+        <!-- Example warning (hidden by default, JS toggles) -->
+        <div class="alert alert-warning" hidden>
+          <span class="alert-icon">⚠</span>
+          <div class="alert-body">
+            <strong>非対応の記法が削除されました</strong>
+            <span class="alert-detail">文字サイズ指定 (3箇所) / 文字色 (1箇所)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     Results
+     ============================================ -->
+<section class="section" id="results-section">
+  <div class="container-narrow">
+    <div class="section-label">// Results</div>
+    <h2 class="section-heading">変換結果</h2>
+    <p class="section-description">
+      選択した出力形式すべての変換結果が表示されています。各カードのコピーボタンで個別にクリップボードへ取得できます。
+    </p>
+
+    <div class="results" id="results">
+      <div class="result-card">
+        <div class="result-header">
+          <div class="result-format">
+            <span class="result-format-label">Format:</span>
+            <span class="result-format-name">小説家になろう</span>
+          </div>
+          <button class="button button-ghost">Copy</button>
+        </div>
+        <div class="result-body">私は|本《ほん》を読んだ。それは《《本当に》》面白かった。
+
+　暗闇の中で、|彼女《かのじょ》は囁いた。
+「終わりは、始まりよ。」</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-header">
+          <div class="result-format">
+            <span class="result-format-label">Format:</span>
+            <span class="result-format-name">カクヨム</span>
+          </div>
+          <button class="button button-ghost">Copy</button>
+        </div>
+        <div class="result-body">私は|本《ほん》を読んだ。それは《《本当に》》面白かった。
+
+　暗闇の中で、|彼女《かのじょ》は囁いた。
+「終わりは、始まりよ。」</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-header">
+          <div class="result-format">
+            <span class="result-format-label">Format:</span>
+            <span class="result-format-name">ノベルアップ＋</span>
+          </div>
+          <button class="button button-ghost">Copy</button>
+        </div>
+        <div class="result-body">私は[[rb:本 > ほん]]を読んだ。それは{{本当に}}面白かった。
+
+　暗闇の中で、[[rb:彼女 > かのじょ]]は囁いた。
+「終わりは、始まりよ。」</div>
+      </div>
+
+      <div class="result-card">
+        <div class="result-header">
+          <div class="result-format">
+            <span class="result-format-label">Format:</span>
+            <span class="result-format-name">ハーメルン</span>
+          </div>
+          <button class="button button-ghost">Copy</button>
+        </div>
+        <div class="result-body">私は[ruby:本>ほん]を読んだ。それは[傍点:本当に]面白かった。
+
+　暗闇の中で、[ruby:彼女>かのじょ]は囁いた。
+「終わりは、始まりよ。」</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Privacy moved into hero-side -->
+
+<!-- ============================================
+     Supported Sites
+     ============================================ -->
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-label">// 28 Sites</div>
+    <h2 class="section-heading">対応サイト</h2>
+    <p class="section-description">
+      主要な小説投稿サイトから二次創作・夢小説系、汎用フォーマットまで網羅しています。<br>
+      サイト名をクリックすると公式サイトへ移動します。
+    </p>
+    <div class="sites-grid">
+      <a class="site-tile" href="https://syosetu.com/" target="_blank" rel="noopener noreferrer"><span>小説家になろう</span><span class="site-tile-num">01</span></a>
+      <a class="site-tile" href="https://kakuyomu.jp/" target="_blank" rel="noopener noreferrer"><span>カクヨム</span><span class="site-tile-num">02</span></a>
+      <a class="site-tile" href="https://www.alphapolis.co.jp/" target="_blank" rel="noopener noreferrer"><span>アルファポリス</span><span class="site-tile-num">03</span></a>
+      <a class="site-tile" href="https://novelup.plus/" target="_blank" rel="noopener noreferrer"><span>ノベルアップ＋</span><span class="site-tile-num">04</span></a>
+      <a class="site-tile" href="https://estar.jp/" target="_blank" rel="noopener noreferrer"><span>エブリスタ</span><span class="site-tile-num">05</span></a>
+      <a class="site-tile" href="https://novelism.jp/" target="_blank" rel="noopener noreferrer"><span>ノベリズム</span><span class="site-tile-num">06</span></a>
+      <a class="site-tile" href="https://syosetu.org/" target="_blank" rel="noopener noreferrer"><span>ハーメルン</span><span class="site-tile-num">07</span></a>
+      <a class="site-tile" href="https://www.pixiv.net/novel/" target="_blank" rel="noopener noreferrer"><span>pixiv小説</span><span class="site-tile-num">08</span></a>
+      <a class="site-tile" href="https://novel.daysneo.com/" target="_blank" rel="noopener noreferrer"><span>NOVEL DAYS</span><span class="site-tile-num">09</span></a>
+      <a class="site-tile" href="https://novelpia.jp/" target="_blank" rel="noopener noreferrer"><span>ノベルピア</span><span class="site-tile-num">10</span></a>
+      <a class="site-tile" href="https://www.novelabo.com/" target="_blank" rel="noopener noreferrer"><span>ノベラボ</span><span class="site-tile-num">11</span></a>
+      <a class="site-tile" href="https://solispia.com/" target="_blank" rel="noopener noreferrer"><span>Solispia</span><span class="site-tile-num">12</span></a>
+      <a class="site-tile" href="https://maho.jp/" target="_blank" rel="noopener noreferrer"><span>魔法のiらんど</span><span class="site-tile-num">13</span></a>
+      <a class="site-tile" href="https://novema.jp/" target="_blank" rel="noopener noreferrer"><span>ノベマ！</span><span class="site-tile-num">14</span></a>
+      <a class="site-tile" href="https://no-ichigo.jp/" target="_blank" rel="noopener noreferrer"><span>野いちご</span><span class="site-tile-num">15</span></a>
+      <a class="site-tile" href="https://www.berrys-cafe.jp/" target="_blank" rel="noopener noreferrer"><span>ベリーズカフェ</span><span class="site-tile-num">16</span></a>
+      <a class="site-tile" href="https://www.tugikuru.jp/" target="_blank" rel="noopener noreferrer"><span>ツギクル</span><span class="site-tile-num">17</span></a>
+      <a class="site-tile" href="https://nola-novel.com/" target="_blank" rel="noopener noreferrer"><span>Nolaノベル</span><span class="site-tile-num">18</span></a>
+      <a class="site-tile" href="https://note.com/" target="_blank" rel="noopener noreferrer"><span>note</span><span class="site-tile-num">19</span></a>
+      <a class="site-tile" href="https://fujossy.jp/" target="_blank" rel="noopener noreferrer"><span>fujossy</span><span class="site-tile-num">20</span></a>
+      <a class="site-tile" href="https://plus.fm-p.jp/" target="_blank" rel="noopener noreferrer"><span>forestpage+</span><span class="site-tile-num">21</span></a>
+      <a class="site-tile" href="https://privatter.net/" target="_blank" rel="noopener noreferrer"><span>Privatter</span><span class="site-tile-num">22</span></a>
+      <a class="site-tile" href="https://xfolio.jp/" target="_blank" rel="noopener noreferrer"><span>Xfolio</span><span class="site-tile-num">23</span></a>
+      <a class="site-tile" href="https://crepu.net/" target="_blank" rel="noopener noreferrer"><span>くるっぷ</span><span class="site-tile-num">24</span></a>
+      <a class="site-tile" href="https://www.aozora.gr.jp/" target="_blank" rel="noopener noreferrer"><span>青空文庫</span><span class="site-tile-num">25</span></a>
+      <a class="site-tile" href="https://conv.denshochan.com/" target="_blank" rel="noopener noreferrer"><span>でんでんコンバーター</span><span class="site-tile-num">26</span></a>
+      <a class="site-tile" href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/ruby" target="_blank" rel="noopener noreferrer"><span>HTML (ruby)</span><span class="site-tile-num">27</span></a>
+      <a class="site-tile" href="https://conv.denshochan.com/markdown" target="_blank" rel="noopener noreferrer"><span>Markdown</span><span class="site-tile-num">28</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     Sponsored Ads (relocated from sidebar)
+     ============================================ -->
+<section class="section">
+  <div class="container-narrow">
+    <div class="section-label">// Sponsored</div>
+    <div class="ads-row">
+      <div class="ad-card">
+        <div class="ad-label">Sponsored</div>
+        <div class="ad-placeholder">[ A8.net バナー 468×60 ]</div>
+      </div>
+      <div class="ad-card">
+        <div class="ad-label">Sponsored</div>
+        <div class="ad-placeholder">[ A8.net バナー 468×60 ]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     Takeyabu Studio Mark
+     ============================================ -->
+<section class="section">
+  <div class="container-narrow studio-mark-section">
+    <a href="https://takeyabustudio.github.io/" class="studio-mark-link" aria-label="Takeyabu Studio">
+      <svg class="studio-mark-logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <clipPath id="rubicon-takeyabu-clip">
+            <path d="M16,6 L26,16 L16,26 L6,16 Z"/>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#rubicon-takeyabu-clip)">
+          <rect x="14" y="6" width="4" height="20" rx="2" fill="#22D3EE" opacity="0.9"/>
+          <rect x="14" y="14" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="14" y="18.5" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="9" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+          <rect x="20" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+        </g>
+        <path d="M16,6 L26,16 L16,26 L6,16 Z" fill="none" stroke="#22D3EE" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+      <div class="studio-mark-text">
+        <div class="studio-mark-name">Takeyabu Studio</div>
+        <div class="studio-mark-url">takeyabustudio.github.io →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================
+     Footer
+     ============================================ -->
+<footer class="site-footer">
+  <div class="container-narrow footer-inner">
+    <div class="footer-meta">
+      © 2026 Takeyabu Studio · MIT License
+    </div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://github.com/takeyabustudio/rubicon" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================
+     Toast (copy success, etc)
+     ============================================ -->
+<div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<script type="module" src="/src/main.js"></script>
+
+</body>
+</html>

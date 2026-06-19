@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rubicon.pages.dev/sitemap.xml

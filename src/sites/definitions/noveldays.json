@@ -1,0 +1,9 @@
+{
+  "id": "noveldays",
+  "name": "NOVEL DAYS",
+  "url": "https://novel.daysneo.com/",
+  "ruby": { "parse": ["general", "abbrev"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" }
+}

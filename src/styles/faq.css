@@ -1,0 +1,296 @@
+/* ============================================
+   FAQ page — page-specific styles
+   依存: tokens.css, main.css（共通クラスを流用）
+   ここには faq 固有の fq-* クラスだけを定義する。
+   ============================================ */
+
+/* Hero ------------------------------------------------ */
+.fq-hero {
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.fq-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.fq-hero-sub {
+  max-width: 680px;
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.fq-hero-sub em {
+  font-style: normal;
+  color: var(--accent-cyan);
+}
+
+/* Tag pills (privacy と同じ作法) ---------------------- */
+.fq-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.fq-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.fq-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+.fq-tag--live {
+  border-color: rgba(0, 217, 122, 0.3);
+  background: rgba(0, 217, 122, 0.08);
+  color: var(--accent-green);
+}
+
+/* Main column ---------------------------------------- */
+.fq-main {
+  padding-bottom: var(--space-2xl);
+}
+
+/* Section label group within FAQ */
+.fq-group {
+  margin-bottom: var(--space-2xl);
+}
+
+.fq-group:last-child {
+  margin-bottom: 0;
+}
+
+.fq-group-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Q&A item ------------------------------------------- */
+.fq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  margin-bottom: var(--space-md);
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.fq-item:last-child {
+  margin-bottom: 0;
+}
+
+.fq-item:hover {
+  border-color: var(--border-strong);
+}
+
+.fq-q {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+}
+
+.fq-q-mark {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  line-height: 1.5;
+}
+
+.fq-q-text {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 2.2vw, 20px);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+}
+
+.fq-a {
+  padding: 0 var(--space-lg) var(--space-lg);
+  margin-left: calc(var(--space-md) + 1.2em);
+}
+
+.fq-a-lead {
+  color: var(--text-body);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.fq-a-lead strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.fq-a-lead em {
+  font-style: normal;
+  color: var(--accent-cyan);
+}
+
+/* 一刺しユーモア行（事実のあとに来る軽口） */
+.fq-a-quip {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.fq-a-quip::before {
+  content: "// ";
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.fq-a code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1px 6px;
+  color: var(--accent-cyan);
+}
+
+.fq-a a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(45, 212, 191, 0.3);
+  transition: border-color 0.15s;
+}
+
+.fq-a a:hover {
+  border-bottom-color: var(--accent-cyan);
+}
+
+/* 4サイト等のリスト */
+.fq-sitelist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: var(--space-md) 0;
+}
+
+.fq-sitelist span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+/* CTA at bottom -------------------------------------- */
+.fq-cta {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.05), transparent);
+  text-align: center;
+}
+
+.fq-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-md);
+}
+
+.fq-cta-sub {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-bottom: var(--space-lg);
+}
+
+.fq-cta .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.fq-cta .button:hover {
+  background: var(--accent-cyan-dim);
+  transform: translateY(-1px);
+}
+
+/* Signature line (privacy と同じ緑ドット署名) -------- */
+.fq-signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.fq-signature .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+/* Mobile --------------------------------------------- */
+@media (max-width: 768px) {
+  .fq-hero {
+    padding: var(--space-2xl) 0 var(--space-lg);
+  }
+  .fq-q {
+    padding: var(--space-md);
+    gap: var(--space-sm);
+  }
+  .fq-a {
+    padding: 0 var(--space-md) var(--space-md);
+    margin-left: 0;
+  }
+}

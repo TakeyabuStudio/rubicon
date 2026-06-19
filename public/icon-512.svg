@@ -1,0 +1,39 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="112" fill="#0A0A0B"/>
+  
+  <!-- 左ページ -->
+  <path d="M 112 176 L 248 208 L 248 384 L 112 352 Z" 
+        fill="none" 
+        stroke="#2DD4BF" 
+        stroke-width="20" 
+        stroke-linejoin="round"/>
+  
+  <!-- 右ページ -->
+  <path d="M 400 176 L 264 208 L 264 384 L 400 352 Z" 
+        fill="none" 
+        stroke="#2DD4BF" 
+        stroke-width="20" 
+        stroke-linejoin="round"/>
+  
+  <!-- 中央の背 -->
+  <line x1="256" y1="208" x2="256" y2="384" stroke="#2DD4BF" stroke-width="16"/>
+  
+  <!-- 左ページの文字行 -->
+  <line x1="144" y1="240" x2="224" y2="258.4" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+  <line x1="144" y1="272" x2="224" y2="290.4" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+  <line x1="144" y1="304" x2="192" y2="315" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+  
+  <!-- 右ページの文字行 -->
+  <line x1="368" y1="240" x2="288" y2="258.4" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+  <line x1="368" y1="272" x2="288" y2="290.4" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+  <line x1="368" y1="304" x2="320" y2="315" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+  
+  <!-- 「るびこん」テキスト（下部、KRYPTのKRYPTテキストと同じ位置） -->
+  <text x="256" y="468" 
+        font-family="-apple-system, BlinkMacSystemFont, 'Noto Sans JP', sans-serif" 
+        font-size="56" 
+        font-weight="700" 
+        fill="#2DD4BF" 
+        text-anchor="middle"
+        letter-spacing="4">るびこん</text>
+</svg>

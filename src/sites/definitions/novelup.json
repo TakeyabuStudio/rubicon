@@ -1,0 +1,10 @@
+{
+  "id": "novelup",
+  "name": "ノベルアップ＋",
+  "url": "https://novelup.plus/",
+  "ruby": { "parse": ["general", "abbrev", "abbrev_alnum"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth", "parenRubyOptIn": true },
+  "_note": "NOTATION §2.1 #4: general/abbrev/paren に加え abc《》・123《》(abbrev_alnum) に対応。"
+}

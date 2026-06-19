@@ -1,0 +1,10 @@
+{
+  "id": "html",
+  "name": "HTML (ruby)",
+  "url": "https://developer.mozilla.org/ja/docs/Web/HTML/Element/ruby",
+  "ruby": { "parse": ["html"], "render": "html" },
+  "bouten": { "parse": ["bouten_html"], "render": "bouten_html" },
+  "indent": "spaces",
+  "options": {},
+  "_note": "NOTATION §3.6 / §7-3: 傍点は text-emphasis(filled sesame) span を採用。承認後 NOTATION §3.6 に追記。"
+}

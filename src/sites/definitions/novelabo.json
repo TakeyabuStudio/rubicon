@@ -1,0 +1,9 @@
+{
+  "id": "novelabo",
+  "name": "ノベラボ",
+  "url": "https://www.novelabo.com/",
+  "ruby": { "parse": ["general", "abbrev"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth", "parenRubyOptIn": true }
+}

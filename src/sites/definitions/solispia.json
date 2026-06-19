@@ -1,0 +1,10 @@
+{
+  "id": "solispia",
+  "name": "Solispia",
+  "url": "https://solispia.com/",
+  "ruby": { "parse": ["general", "abbrev"], "render": "general" },
+  "bouten": { "parse": ["bouten_double"], "render": "bouten_double" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" },
+  "_note": "NOTATION §2.1 #12: general 推奨 / abbrev も可。"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "novelpia",
+  "name": "ノベルピア",
+  "url": "https://novelpia.jp/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" }
+}

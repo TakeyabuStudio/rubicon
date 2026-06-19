@@ -1,0 +1,10 @@
+{
+  "id": "tugikuru",
+  "name": "ツギクル",
+  "url": "https://www.tugikuru.jp/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "halfwidth" },
+  "_note": "NOTATION §2.1 #17: 半角縦棒のみ(全角縦棒非対応)。出力は半角縦棒固定。"
+}

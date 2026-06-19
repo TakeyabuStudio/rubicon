@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>よくある質問 | るびこん — 料金・対応サイト・安全性のすべて</title>
+<meta name="description" content="るびこんのよくある質問。対応28サイト、完全無料・登録不要の理由、入力した小説がどこにも送信されない仕組み、傍点が一部サイトで変換されない理由、複数サイト同時変換まで、まとめて答えます。" />
+<meta name="keywords" content="るびこん,FAQ,ルビ変換,料金,無料,対応サイト,なろう,カクヨム,傍点,使い方" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://rubicon.pages.dev/faq/" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/icon-512.svg" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="よくある質問 | るびこん" />
+<meta property="og:description" content="料金・対応サイト・安全性・傍点の扱いまで、るびこんのよくある質問にまとめて答えます。" />
+<meta property="og:url" content="https://rubicon.pages.dev/faq/" />
+<meta property="og:image" content="https://rubicon.pages.dev/ogp.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://rubicon.pages.dev/ogp.png" />
+
+<link rel="stylesheet" href="/src/styles/tokens.css" />
+<link rel="stylesheet" href="/src/styles/main.css" />
+<link rel="stylesheet" href="/src/styles/faq.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "対応しているサイトはいくつですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "28サイトに対応しています。小説家になろう・カクヨム・アルファポリス・ノベルアップ＋・エブリスタなどの主要投稿サイトから、pixiv小説・Privatter・くるっぷ・Xfolioなどの二次創作／夢小説系、青空文庫・でんでんコンバーター・HTML・Markdownといった汎用フォーマットまで網羅しています。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "料金はかかりますか？登録は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "完全無料です。会員登録もメールアドレスも、アプリのインストールも要りません。使用回数の制限もなく、商用利用も自由です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "入力した小説はどこかに送信されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "送信されません。変換はすべてあなたのブラウザの中で完結し、本文をサーバーへ送る経路がそもそもコードに存在しません。開発者ツールのNetworkパネルを開いたまま変換すれば、通信が一度も発生しないことを自分で確認できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "一部のサイトで傍点が変換されないのはなぜですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Privatter・くるっぷ・魔法のiらんど・Markdownの4サイトは、公式が案内する傍点の専用記法を一次情報で確認できなかったため、傍点をあえて無効化しています。ルビや字下げは従来どおり変換します。出力先にこれらを選んでいて入力に傍点が含まれる場合は、サイレントに消さず『傍点を削除しました』と警告を表示します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "漢字（よみ）のような丸括弧ルビが変換されないことがあるのはなぜですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "丸括弧ルビは、本文中の通常の丸括弧（補足説明など）を誤ってルビと解釈してしまう危険があるため、初期状態では無効にしています。なろう・ノベルアップ＋・ノベラボのように丸括弧ルビを正式サポートするサイトを入力に選び、明示的にオプトインしたときだけ有効になります。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "複数のサイト形式へ同時に変換できますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "できます。入力形式を1つ選び、出力形式は複数選択できます。選んだすべての形式へ一度に変換され、結果がそれぞれ別カードで表示されます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "アプリのインストールは必要ですか？スマホでも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "インストールは不要です。ブラウザだけで動くので、PCでもスマートフォンでもそのまま使えます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "オープンソースですか？ライセンスは何ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MITライセンスのオープンソースです。ソースコードはGitHubで公開しており、ここに書いてあることはすべて誰でもコードで確かめられます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "このサイトは何で作られていますか？WordPressですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WordPressではありません。素のJavaScript（バニラJS）にビルドツールのViteを組み合わせ、中間表現（AST）をはさむ自前設計で変換しています。実行時の外部ライブラリ依存はゼロ、配信はCloudflare Pages、ライセンスはMITです。サーバーもデータベースも管理画面もありません。WordPressはCMSとしてサーバー通信・データベース・プラグインが前提になり、このツールが目指すローカル完結・送信ゼロ・軽量という性格には合わないため採用していません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "作者も小説を書くのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "書いていますし、実際に投稿もしています。ただし恥ずかしいので、どこの誰かは内緒にさせてください。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "なぜ無料やオープンソースにこだわるのですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "表現において自由とは最大の表現だと考えているからです。書く道具に料金や登録の壁があれば、その手前で諦める人が出ます。原稿を覗かず、料金を求めず、コードも開いておくことで障害物を取り除くこと自体が、このツールの主張です。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "将来、有料になる可能性はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "今のところ有料化は考えていません。このWebツール自体は無料のまま続ける方針です。ただし、オフライン環境でアプリとして使いたいといった要望があれば、別形態での提供を検討する可能性はあります。その場合もWeb版を有料に切り替えることは想定していません。"
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============================================ Header ============================================ -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="https://takeyabustudio.github.io/" class="brand">
+      <svg class="brand-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><clipPath id="rubicon-header-clip"><path d="M16,6 L26,16 L16,26 L6,16 Z"/></clipPath></defs>
+        <g clip-path="url(#rubicon-header-clip)">
+          <rect x="14" y="6" width="4" height="20" rx="2" fill="#22D3EE" opacity="0.9"/>
+          <rect x="14" y="14" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="14" y="18.5" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="9" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+          <rect x="20" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+        </g>
+        <path d="M16,6 L26,16 L16,26 L6,16 Z" fill="none" stroke="#22D3EE" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+      Takeyabu Studio
+    </a>
+    <nav class="nav">
+      <a href="/">変換ツール</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================ Hero ============================================ -->
+<section class="fq-hero">
+  <div class="container-narrow">
+    <p class="eyebrow">// FAQ · Frequently Asked Questions</p>
+    <h1 class="fq-hero-title">よくある質問</h1>
+    <p class="fq-hero-sub">
+      料金、対応サイト、入力した本文の安全性、そして<em>うまく変換されないように見えるとき</em>に何が起きているのか。検索で来た人がいちばん知りたいことから、順番に答えます。
+    </p>
+    <div class="fq-tags">
+      <span class="fq-tag fq-tag--live"><span class="dot"></span>28 SITES</span>
+      <span class="fq-tag">FREE FOREVER</span>
+      <span class="fq-tag">NO SIGN-UP</span>
+      <span class="fq-tag">ZERO EGRESS</span>
+      <span class="fq-tag">MIT · OPEN SOURCE</span>
+    </div>
+  </div>
+</section>
+
+<main class="fq-main container-narrow">
+
+  <!-- 基本 -->
+  <section class="fq-group">
+    <p class="fq-group-label">// Basics — 基本</p>
+
+    <!-- A -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">対応しているサイトはいくつですか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          <strong>28サイト</strong>に対応しています。主要な小説投稿サイト（なろう・カクヨム・アルファポリス・ノベルアップ＋・エブリスタほか）から、二次創作／夢小説系（pixiv小説・Privatter・くるっぷ・Xfolioほか）、汎用フォーマット（青空文庫・でんでんコンバーター・HTML・Markdown）まで網羅しています。全リストと、どの形式がどの記法に対応するかは <a href="/sites/">対応サイト一覧</a> で確認できます。
+        </p>
+        <p class="fq-a-quip">数を盛っていないか不安なら、トップの一覧を端から数えてみてください。ちゃんと28あります。</p>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">料金はかかりますか？登録は必要ですか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          <strong>完全無料</strong>です。会員登録もメールアドレスも、アプリのインストールも要りません。使用回数の制限もなく、商用利用も自由です。
+        </p>
+        <p class="fq-a-quip">課金ボタンを探しても見つかりません。作っていないので。</p>
+      </div>
+    </div>
+
+    <!-- G -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">アプリのインストールは必要ですか？スマホでも使えますか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          <strong>インストール不要</strong>です。ブラウザだけで動くので、PCでもスマートフォンでもそのまま使えます。ページを開いた瞬間がもう準備完了の状態です。
+        </p>
+        <p class="fq-a-quip">「ダウンロード中…」のバーを眺める時間はありません。残念でしたか？</p>
+      </div>
+    </div>
+
+    <!-- F -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">複数のサイト形式へ同時に変換できますか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          できます。入力形式を1つ選び、<strong>出力形式は複数選択</strong>してください。選んだすべての形式へ一度に変換され、結果がそれぞれ別のカードで表示されます。なろうに上げた原稿を、カクヨム・pixiv・青空文庫へまとめて作り直す、といった使い方ができます。
+        </p>
+        <p class="fq-a-quip">1サイトずつ手で直していた頃には、もう戻れません。懐かしいですね。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- プライバシー -->
+  <section class="fq-group">
+    <p class="fq-group-label">// Privacy — 安全性</p>
+
+    <!-- C -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">入力した小説は、どこかに送信されますか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          <strong>送信されません。</strong>変換はすべてあなたのブラウザの中で完結し、本文をサーバーへ送る経路が<em>そもそもコードに存在しません</em>。開発者ツール（<code>F12</code>）のNetworkパネルを開いたまま変換すれば、通信が一度も発生しないことを自分で確かめられます。仕組みの全体は <a href="/privacy/">プライバシーと脅威モデル</a> に、コードのレベルまで分解して書いてあります。
+        </p>
+        <p class="fq-a-quip">あなたの未公開原稿に興味がないわけではないんです。物理的に受け取れないだけで。</p>
+      </div>
+    </div>
+
+    <!-- B2: 課金/トラッキング補強（H と並ぶ位置に H を置く） -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">オープンソースですか？ライセンスは何ですか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          <strong>MITライセンス</strong>のオープンソースです。ソースコードは <a href="https://github.com/takeyabustudio/rubicon" target="_blank" rel="noopener noreferrer">GitHub</a> で公開しています。「送信していません」「保存していません」といった説明を、言葉だけで信じてもらう必要がありません——コードを読めば全部書いてあります。
+        </p>
+        <p class="fq-a-quip">疑うのは正しい態度です。だからこそ、疑った人が確かめられるように全部開けてあります。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 記法のふるまい -->
+  <section class="fq-group">
+    <p class="fq-group-label">// Notation — 記法のふるまい</p>
+
+    <!-- D -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">一部のサイトで傍点が変換されないのはなぜですか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          次の4サイトは、公式が案内する傍点の専用記法を<strong>一次情報で確認できなかった</strong>ため、傍点をあえて無効化しています。ルビや字下げは従来どおり変換します。
+        </p>
+        <div class="fq-sitelist">
+          <span>Privatter</span><span>くるっぷ</span><span>魔法のiらんど</span><span>Markdown</span>
+        </div>
+        <p class="fq-a-lead">
+          出力先にこれらを選んでいて、入力に傍点が含まれている場合は、黙って消さずに<strong>「傍点を削除しました（N箇所）」と警告</strong>を出します。気づかないうちに原稿が変わっている、という事態を避けるためです。
+        </p>
+        <p class="fq-a-quip">「たぶんこの記法だろう」で実装してあなたの原稿に謎の点を撒くより、正直に「できません」と言うほうを選びました。勘弁してください。</p>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">漢字（よみ）のような丸括弧ルビが、変換されないことがあるのはなぜですか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          丸括弧ルビは、本文中のふつうの丸括弧（補足やセリフの注釈など）を<strong>誤ってルビと解釈してしまう危険</strong>があるため、初期状態では無効にしています。なろう・ノベルアップ＋・ノベラボのように丸括弧ルビを正式サポートするサイトを入力に選び、明示的にオンにしたときだけ有効になります。
+        </p>
+        <p class="fq-a-quip">「（笑）」がぜんぶルビ扱いになる世界線を、あなたに見せるわけにはいかなかったのです。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 舞台裏 -->
+  <section class="fq-group">
+    <p class="fq-group-label">// Behind — 舞台裏</p>
+
+    <!-- 技術仕様 -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">このサイトは何で作られていますか？WordPressですか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          WordPressではありません。<strong>素のJavaScript（バニラJS）</strong>に、ビルドツールの <code>Vite</code> を組み合わせて作っています。変換処理は中間表現（AST）をはさむ自前の設計で、<strong>実行時の外部ライブラリ依存はゼロ</strong>。配信は <code>Cloudflare Pages</code>、ライセンスはMITです。サーバーもデータベースも、管理画面もありません。
+        </p>
+        <p class="fq-a-lead">
+          WordPressをあえて使っていないのは、このツールの性格に合わないからです。WordPressは記事を貯めて動的に出すCMSで、PHP・データベース・プラグイン・管理画面が前提になります。便利な反面、<strong>サーバーとの通信が常に発生し、プラグインの数だけ攻撃される面が広がり、動作も重く</strong>なります。るびこんがやりたいのは逆——あなたのブラウザの中だけで完結し、どこにも送信せず、開いた瞬間に動く軽さです。その目的には、静的なファイルを置くだけの構成のほうが、速くて・安全で・壊れにくい。道具は目的で選ぶ、というだけの話です。
+        </p>
+        <p class="fq-a-quip">変換ツールひとつのためにデータベースを立てるのは、メモを取るために役所へ書類を出しに行くようなものです。</p>
+      </div>
+    </div>
+
+    <!-- 小説書くの -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">作者も小説を書くのですか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          書いています。実際に投稿もしています。ただ、<strong>恥ずかしいので、どこの誰かは内緒</strong>でお願いします。
+        </p>
+        <p class="fq-a-quip">このツールが妙に「書き手の手間」を分かっているのは、たぶんそういう事情です。</p>
+      </div>
+    </div>
+
+    <!-- なぜ無料/フリーライセンス -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">なぜ無料やオープンソースにこだわるのですか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          <strong>表現において、自由とは最大の表現だ</strong>と考えているからです。書く道具に金や登録の壁があれば、その壁の手前で諦める人が必ず出ます。誰の原稿も覗かず、誰にも料金を求めず、コードまで開いておく——そうやって障害物を取り除くこと自体が、このツールの主張です。ルビの変換は手段で、本当に守りたいのは「書きたい人が、余計なことに邪魔されずに書ける状態」のほうです。
+        </p>
+        <p class="fq-a-quip">無料は太っ腹なのではなく、思想です。自由に書ける場所を、自由なまま置いておきたいだけで。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- これから -->
+  <section class="fq-group">
+    <p class="fq-group-label">// Roadmap — これから</p>
+
+    <!-- 有料化 -->
+    <div class="fq-item">
+      <div class="fq-q">
+        <span class="fq-q-mark">Q.</span>
+        <span class="fq-q-text">将来、有料になる可能性はありますか？</span>
+      </div>
+      <div class="fq-a">
+        <p class="fq-a-lead">
+          今のところ<strong>有料化は考えていません</strong>。このWebツール自体は無料のまま続ける方針です。ただし、<strong>オフライン環境でアプリとして使いたい</strong>といった声があれば、別形態での提供を検討する可能性はあります。その場合も、いまのWeb版を有料に切り替えることは想定していません。
+        </p>
+        <p class="fq-a-quip">要するに、ここで使えるものはこの先もここで無料です。約束というより、そういう作りです。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="fq-cta">
+    <p class="fq-cta-title">疑問が解けたら、あとは貼るだけ。</p>
+    <p class="fq-cta-sub">原稿を貼って、出力先を選んで、変換。それで終わりです。</p>
+    <a class="button" href="/">変換ツールを開く →</a>
+  </div>
+
+  <div class="fq-signature">
+    <span class="dot"></span>
+    <span>Free forever. Zero egress. Open source. Verifiable in your browser.</span>
+  </div>
+
+</main>
+
+<!-- ============================================ Footer ============================================ -->
+<footer class="site-footer">
+  <div class="container-narrow footer-inner">
+    <div class="footer-meta">© 2026 Takeyabu Studio · MIT License</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://github.com/takeyabustudio/rubicon" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

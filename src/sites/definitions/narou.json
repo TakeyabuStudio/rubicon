@@ -1,0 +1,9 @@
+{
+  "id": "narou",
+  "name": "小説家になろう",
+  "url": "https://syosetu.com/",
+  "ruby": { "parse": ["general", "abbrev"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth", "parenRubyOptIn": true }
+}

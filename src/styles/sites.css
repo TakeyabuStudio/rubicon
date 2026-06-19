@@ -1,0 +1,366 @@
+/* ============================================
+   SITES page — page-specific styles
+   依存: tokens.css, main.css（共通クラスを流用）
+   sites 固有の st-* クラスだけを定義する。
+   ============================================ */
+
+/* Hero ------------------------------------------------ */
+.st-hero {
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.st-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin: var(--space-md) 0 var(--space-lg);
+}
+
+.st-hero-sub {
+  max-width: 700px;
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.st-hero-sub em {
+  font-style: normal;
+  color: var(--accent-cyan);
+}
+
+.st-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.st-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.st-tag .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+.st-tag--live {
+  border-color: rgba(0, 217, 122, 0.3);
+  background: rgba(0, 217, 122, 0.08);
+  color: var(--accent-green);
+}
+
+/* Main ------------------------------------------------ */
+.st-main {
+  padding-bottom: var(--space-2xl);
+}
+
+.st-section-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  margin-bottom: var(--space-md);
+}
+
+.st-section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-md);
+}
+
+.st-lead {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+  max-width: 720px;
+  margin-bottom: var(--space-xl);
+}
+
+.st-lead a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(45, 212, 191, 0.3);
+}
+.st-lead a:hover { border-bottom-color: var(--accent-cyan); }
+
+/* 凡例 ------------------------------------------------ */
+.st-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.st-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ○×バッジ ------------------------------------------- */
+.st-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.st-mark--yes {
+  color: var(--accent-cyan);
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+}
+
+.st-mark--no {
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+}
+
+/* 表（デスクトップ＝グリッド行） --------------------- */
+.st-table {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.st-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 130px 64px 64px 64px;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 14px var(--space-lg);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.st-row:last-child { border-bottom: none; }
+
+.st-row:hover { background: var(--bg-tertiary); }
+
+.st-row--head {
+  background: var(--bg-tertiary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.st-row--head:hover { background: var(--bg-tertiary); }
+
+.st-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.st-name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.st-name a {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-body);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.st-name a:hover { color: var(--accent-cyan); }
+
+.st-family {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.st-cell-head { text-align: center; }
+.st-cell { display: flex; justify-content: center; }
+
+/* モバイル＝カード化 --------------------------------- */
+.st-mobile-label { display: none; }
+
+@media (max-width: 768px) {
+  .st-row--head { display: none; }
+
+  .st-table {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .st-row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "name name"
+      "family family"
+      "ruby bouten"
+      "indent indent";
+    gap: var(--space-sm) var(--space-md);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+  }
+
+  .st-row:hover { background: var(--bg-secondary); }
+
+  .st-num { display: none; }
+
+  .st-name { grid-area: name; }
+  .st-family { grid-area: family; }
+
+  .st-cell {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+  .st-cell--ruby { grid-area: ruby; }
+  .st-cell--bouten { grid-area: bouten; }
+  .st-cell--indent { grid-area: indent; }
+
+  .st-mobile-label {
+    display: inline;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+  }
+}
+
+/* 注記 ------------------------------------------------ */
+.st-notes {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.st-notes p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.75;
+  margin-bottom: var(--space-sm);
+}
+
+.st-notes p:last-child { margin-bottom: 0; }
+
+.st-notes strong { color: var(--text-body); font-weight: 600; }
+
+.st-notes a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(45, 212, 191, 0.3);
+}
+.st-notes a:hover { border-bottom-color: var(--accent-cyan); }
+
+/* CTA + signature ------------------------------------- */
+.st-cta {
+  margin-top: var(--space-2xl);
+  padding: var(--space-xl);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.05), transparent);
+  text-align: center;
+}
+
+.st-cta-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-md);
+}
+
+.st-cta-sub {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-bottom: var(--space-lg);
+}
+
+.st-cta .button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.st-cta .button:hover {
+  background: var(--accent-cyan-dim);
+  transform: translateY(-1px);
+}
+
+.st-signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.st-signature .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 8px var(--accent-green);
+}
+
+@media (max-width: 768px) {
+  .st-hero { padding: var(--space-2xl) 0 var(--space-lg); }
+}

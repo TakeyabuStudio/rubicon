@@ -1,0 +1,10 @@
+{
+  "id": "forestpage_plus",
+  "name": "forestpage+",
+  "url": "https://plus.fm-p.jp/",
+  "ruby": { "parse": ["forestpage_plus"], "render": "forestpage_plus" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" },
+  "_note": "NOTATION §2.2 #21: ルビ [#ruby=親_ルビ#] / 傍点 bouten_ruby(中黒代用)。"
+}

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>プライバシーと脅威モデル | るびこん — 本文は端末の外に出ない、その証明</title>
+<meta name="description" content="るびこんは入力された小説本文をネットワークへ送信しません。送信しないのではなく、送信する経路がコード・ビルド成果物・CSP の三層で存在しないことを、検証できる技術的な事実として、一つずつ示します。" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://rubicon.pages.dev/privacy/" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/icon-512.svg" />
+
+<meta property="og:type" content="article" />
+<meta property="og:title" content="プライバシーと脅威モデル | るびこん" />
+<meta property="og:description" content="本文は端末の外に出ない。その経路がコード・ビルド成果物・CSP の三層で存在しないことを一つずつ確かめます。" />
+<meta property="og:url" content="https://rubicon.pages.dev/privacy/" />
+<meta property="og:image" content="https://rubicon.pages.dev/ogp.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://rubicon.pages.dev/ogp.png" />
+
+<link rel="stylesheet" href="/src/styles/tokens.css" />
+<link rel="stylesheet" href="/src/styles/main.css" />
+<link rel="stylesheet" href="/src/styles/privacy.css" />
+</head>
+<body>
+
+<!-- ============================================ Header ============================================ -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="https://takeyabustudio.github.io/" class="brand">
+      <svg class="brand-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><clipPath id="rubicon-header-clip"><path d="M16,6 L26,16 L16,26 L6,16 Z"/></clipPath></defs>
+        <g clip-path="url(#rubicon-header-clip)">
+          <rect x="14" y="6" width="4" height="20" rx="2" fill="#22D3EE" opacity="0.9"/>
+          <rect x="14" y="14" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="14" y="18.5" width="4" height="1.2" rx="0.6" fill="#0D1117" opacity="0.85"/>
+          <rect x="9" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+          <rect x="20" y="6" width="3" height="20" rx="1.5" fill="#22D3EE" opacity="0.38"/>
+        </g>
+        <path d="M16,6 L26,16 L16,26 L6,16 Z" fill="none" stroke="#22D3EE" stroke-width="1.3" stroke-linejoin="round"/>
+      </svg>
+      Takeyabu Studio
+    </a>
+    <nav class="nav">
+      <a href="/">変換ツール</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================ Hero ============================================ -->
+<section class="pv-hero">
+  <div class="container-narrow">
+    <p class="eyebrow">// Privacy &amp; Threat Model · Zero Egress</p>
+    <h1 class="pv-hero-title">Your manuscript<br>never leaves<br>this machine.</h1>
+    <p class="pv-hero-sub">
+      るびこんは、入力された本文をネットワークに送り出しません。「送らない方針」という話ではなく、<em>そもそも送り出す経路が存在しない</em>——この一点を、ソースコード・ビルド成果物・配信ヘッダの三層に分けて確かめていきます。読み手としては技術者を想定し、なるべく密度を落とさずに書きました。
+    </p>
+    <div class="pv-tags">
+      <span class="pv-tag pv-tag--live"><span class="dot"></span>ZERO EGRESS</span>
+      <span class="pv-tag">CLIENT-SIDE ONLY</span>
+      <span class="pv-tag">CSP ENFORCED</span>
+      <span class="pv-tag">NO RUNTIME DEPS</span>
+      <span class="pv-tag">MIT · OPEN SOURCE</span>
+    </div>
+  </div>
+</section>
+
+<main class="pv-main container-narrow">
+
+  <!-- 00 検証から始める -->
+  <section class="pv-section">
+    <p class="section-label">// 00 — Verify first</p>
+    <h2 class="section-heading">主張ではなく、検証から始める</h2>
+    <p>
+      この文書の結論は、読む前に自分で確かめられます。手順はごく単純です。本サイトを開き、開発者ツール（<kbd>F12</kbd>、または <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>）の <b>Network</b> パネルを開いたまま、本文を貼り付けて変換してみてください。
+    </p>
+    <p>
+      変換しても、ネットワークリクエストは <b>一本も発生しません</b>。XHR も Fetch も WebSocket も、ビーコンも、画像の GET によるピングも記録されません。もう一歩踏み込むなら、<b>Console</b> で <code>performance.getEntriesByType('resource')</code> を実行すると、ページが読み込んだリソースの URL が全部並びます。そこに自オリジン（<code>rubicon.pages.dev</code>）以外の宛先は出てきません。
+    </p>
+    <p class="pv-aside">
+      この先は、<b>なぜそうなるのか</b>をコードのレベルまで分解した説明です。先に検証結果（通信ゼロ）があって、あとはその仕組みを追っていくだけ。この順序には意味があります——結論は実際に観測できる事実であって、こちらの言い分を信じてもらう必要がないからです。
+    </p>
+  </section>
+
+  <!-- 01 脅威モデル -->
+  <section class="pv-section">
+    <p class="section-label">// 01 — Threat model</p>
+    <h2 class="section-heading">何を「漏れない」と言っているのか</h2>
+    <p>
+      プライバシーの話は、何を守りたいのか（保護対象）と、何から守るのか（脅威）をはっきりさせないと意味を持ちません。守りたいものは明確で——<b>あなたが入力欄に貼り付けた本文そのもの</b>です。未公開の原稿、筆名や作風、伏せ字や傍点の付け方といった執筆上の癖まで含めた、テキスト全体を指します。
+    </p>
+    <p>これに対して、想定する脅威は次の四つです。</p>
+    <ul class="pv-ul">
+      <li><b>運営者が本文を見る・ためる</b> — 運営（Takeyabu Studio）が、あなたの本文を受け取って記録したり分析したりすること。</li>
+      <li><b>第三者による解析やトラッキング</b> — 解析タグや広告 SDK の類が、本文や入力の動きを外に送ること。</li>
+      <li><b>通信経路での盗み見</b> — 本文が平文のままネットワークに出て、途中で読まれること。</li>
+      <li><b>保存されたものが後から漏れる</b> — 本文がブラウザの中に残り、あとで別の誰かに読まれること。</li>
+    </ul>
+    <p>
+      この四つすべてに対する答えは、最終的に一つの事実に行き着きます——<b>本文がプロセスのメモリから外へ出ていく経路が、実装のどこにもない</b>。送信が起きなければ、受信も蓄積も盗み見も解析も成り立ちません。保存もしていません。以下では、この「経路がない」を四つの層（アプリのコード／ビルド成果物／ブラウザのオリジン境界／配信時の CSP）に分けて、一つずつ確かめていきます。
+    </p>
+    <p class="pv-aside pv-aside--scope">
+      この文書が扱わない範囲も書いておきます。これはあくまで<b>本文の機密性</b>についての話で、サービスが落ちない保証（可用性）や、あなたの端末そのものがすでにマルウェアに感染している場合の防御までは対象にしていません。後者は、どんな Web アプリの設計をもってしても防げない領域です。
+    </p>
+  </section>
+
+  <!-- 02 データフロー -->
+  <section class="pv-section pv-section--core">
+    <p class="section-label">// 02 — Data flow</p>
+    <h2 class="section-heading">本文の全経路を追跡する</h2>
+    <p>
+      入力された文字列がどこを通るのかを、関数の呼び出し単位で端から端まで追ってみます。途中でネットワークの境界もストレージの境界も跨がないことを、経路そのもので示します。
+    </p>
+    <div class="dataflow">
+      <div class="dataflow-step"><span class="df-n">1</span><span class="df-t"><code>&lt;textarea&gt;</code> の <code>.value</code> を読み取って、JavaScript の文字列としてメモリ上に持つ。<span class="df-note">DOM プロパティを読むだけ。ここまでネットワークは関与しません。</span></span></div>
+      <div class="dataflow-arrow" aria-hidden="true">↓</div>
+      <div class="dataflow-step"><span class="df-n">2</span><span class="df-t">パーサーが文字列を行ごとに分け、正規表現でルビ・傍点・字下げなどのトークンを取り出して、中間表現（AST）に変換する。<span class="df-note">入力は文字列、出力はオブジェクトの配列。副作用も I/O もない純粋な関数です。</span></span></div>
+      <div class="dataflow-arrow" aria-hidden="true">↓</div>
+      <div class="dataflow-step"><span class="df-n">3</span><span class="df-t">レンダラーが AST を、選んだ出力先サイトの記法の文字列に組み立て直す。<span class="df-note">入力はオブジェクトの配列、出力は文字列。これも純粋な関数です。</span></span></div>
+      <div class="dataflow-arrow" aria-hidden="true">↓</div>
+      <div class="dataflow-step"><span class="df-n">4</span><span class="df-t">結果の文字列を <code>textContent</code> で結果カードに表示する。必要なら、あなたの操作で <code>navigator.clipboard.writeText()</code> を呼んでローカルのクリップボードへコピー。<span class="df-note">表示は DOM、コピーは OS への操作。どちらもネットワークではありません。</span></span></div>
+    </div>
+    <p>
+      この経路のどこにも、<code>fetch</code> / <code>XMLHttpRequest</code> / <code>WebSocket</code> / <code>sendBeacon</code> / <code>new Image().src</code> といった送信のための命令は出てきません。中核（パーサー・レンダラー・トークナイザー・AST の構築）は、引数の文字列を受け取って値を返すだけの関数の集まりで、<code>document</code> への参照すら持っていません。本文は <b>プロセスのメモリから画面まで</b>で完結します。これが設計上の前提（不変条件）です。
+    </p>
+  </section>
+
+  <!-- 03 送信APIの不在 -->
+  <section class="pv-section">
+    <p class="section-label">// 03 — Absence of egress primitives</p>
+    <h2 class="section-heading">送信の命令はソースにない</h2>
+    <p>
+      ソースツリー全体（<code>src/</code> 配下の JavaScript すべて）を対象に、ネットワーク送信を起こしうる API を片っ端から検索しました。探したのは <code>fetch(</code> / <code>XMLHttpRequest</code> / <code>.open(</code> / <code>.send(</code> / <code>WebSocket</code> / <code>EventSource</code> / <code>navigator.sendBeacon</code> / <code>new Image(</code>、それに <code>axios</code> のような HTTP ライブラリの参照です。
+    </p>
+    <p>
+      実際に実行されるコードとしては、<b>一件もヒットしませんでした</b>。引っかかったのは二つだけ。一つは <code>navigator.clipboard.writeText()</code>（これはネットワークではなく OS のクリップボードへの書き込みです）、もう一つは「外部送信は一切行わない」という趣旨のコメント文字列です。前者はローカルの操作、後者は実行されないただのテキストです。
+    </p>
+    <p>
+      送信の命令がそもそも書かれていない、というのは「送信しないように気をつけて実装した」よりずっと強いことです。<b>送信するための語彙が、コードベースに一度も登場しない</b>。気をつけたかどうかの話ではなく、有無の話だからです。
+    </p>
+  </section>
+
+  <!-- 04 バンドル唯一のfetch -->
+  <section class="pv-section">
+    <p class="section-label">// 04 — The one fetch in the bundle</p>
+    <h2 class="section-heading">配信バンドル唯一の通信命令を解剖する</h2>
+    <p>
+      誠実さのために、いちばん鋭いツッコミに先回りしておきます。<b>ビルドした後の配信物</b>（ミニファイ済みの <code>dist/assets/*.js</code>）を調べると、<code>fetch(</code> が <b>ちょうど一か所だけ</b>見つかります。ソースには無いものが成果物にある以上、これは説明しておかないといけません。
+    </p>
+    <p>該当箇所は、ミニファイされてこんな形になっています。</p>
+    <pre class="pv-code"><code>function o(s){ if(s.ep) return; s.ep=!0;
+  const r=e(s); fetch(s.href,r); }</code></pre>
+    <p>
+      これは Vite が自動で吐く <b>モジュールプリロード・ポリフィル</b>（<code>__vitePreload</code> という仕組み）です。役目は、<code>&lt;link rel="modulepreload"&gt;</code> に並んだコード分割チャンクを、対応していないブラウザのために先読みしておくこと。<code>fetch</code> の引数 <code>s.href</code> は、その <code>link</code> 要素の <code>href</code>、つまり <b>このサイト自身の、同じオリジンの JS チャンク</b>（<code>/assets/*.js</code>）を指します。ここにユーザーの入力が入り込む余地はありません。取りに行くのはいつでも自分自身のプログラムの一部で、GET でスクリプトを読むだけです。
+    </p>
+    <p>
+      しかも今回のビルドでは、出力された <code>dist/index.html</code> に <code>rel="modulepreload"</code> のリンクが <b>一つもありません</b>（単一バンドル構成なので、Vite が preload リンクを出していない）。先読みする対象がないということは、この関数 <code>o()</code> を呼ぶ入口もない——つまり <b>一度も実行されない死コード</b>です。仮にこの先コード分割が入って呼ばれるようになったとしても、送り先は自オリジンの <code>.js</code> に限られますし、あとで触れる CSP の <code>connect-src 'self'</code> が、それより外への逸脱を止めます。
+    </p>
+    <p class="pv-aside">
+      まとめると、成果物にある唯一の <code>fetch</code> は、ビルドツールが付けたもので、宛先は自オリジンに限られ、今回のビルドではそもそも実行されません。本文を運ぶ経路ではないということです。ここを隠さず解剖しておくことが、残りの説明の信頼性につながると考えています。
+    </p>
+  </section>
+
+  <!-- 05 CSP逐条 -->
+  <section class="pv-section">
+    <p class="section-label">// 05 — Content-Security-Policy, directive by directive</p>
+    <h2 class="section-heading">CSP を一条ずつ読む</h2>
+    <p>
+      配信時、本サイトは次の Content-Security-Policy をレスポンスヘッダとして付けます（<code>public/_headers</code> に定義していて、ビルド成果物の <code>dist/_headers</code> にも同じ内容で出力されます）。
+    </p>
+    <pre class="pv-code"><code>Content-Security-Policy:
+  default-src 'self';
+  script-src 'self';
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https://www14.a8.net;
+  connect-src 'self';
+  font-src 'self' data:;
+  frame-ancestors 'none';
+  base-uri 'self';
+  form-action 'self'</code></pre>
+    <p>各ディレクティブが何をしていて、本文の機密性にどう効くのかを、一つずつ見ていきます。</p>
+
+    <dl class="pv-dl">
+      <dt><code>default-src 'self'</code></dt>
+      <dd>個別に指定していないリソース取得の既定値を、自オリジンに絞ります。以下の各ディレクティブは、この既定をリソースの種類ごとに上書きしたり追認したりするものです。フォールバックが <code>'self'</code> である時点で、明示的に許可しない限り外部は塞がっています。</dd>
+
+      <dt><code>script-src 'self'</code></dt>
+      <dd>スクリプトの取得元を自オリジンに限ります。<code>'unsafe-inline'</code> も <code>'unsafe-eval'</code> も与えていないので、インラインの <code>&lt;script&gt;</code>・<code>eval</code>・<code>on*</code> 属性によるコード実行は拒否されます。これで外部の解析タグや広告 SDK を注入できなくなり、同時に XSS の実行段も一つ塞げます。第三者の JS が走らない以上、第三者が本文を読み出して送る、という役回り自体が成立しません。</dd>
+
+      <dt><code>connect-src 'self'</code></dt>
+      <dd>本文の機密性にとって、ここがいちばん効く条項です。<code>fetch</code> / <code>XMLHttpRequest</code> / <code>WebSocket</code> / <code>EventSource</code> / <code>navigator.sendBeacon</code> の接続先を自オリジンに限ります。仮にコードが（あるいは将来の依存が）外部へ送ろうとしても、ブラウザが接続そのものを拒否します。コードに送信が無いこと（03・04）に加えて、<b>ブラウザの側でも外部の宛先が遮断される</b>。これが二重化の片方です。</dd>
+
+      <dt><code>img-src 'self' data: https://www14.a8.net</code></dt>
+      <dd>画像の取得元を、自オリジン・<code>data:</code> URI・A8.net の指定ホストに限ります。A8.net を許可しているのは、将来のアフィリエイトバナー（<code>&lt;img&gt;</code> での表示）を見越した先回りの設定ですが、許しているのは <b>画像を読み込むこと</b>だけです。<code>script-src</code> は <code>'self'</code> のままなので広告由来の JS は走らず、<code>connect-src 'self'</code> のままなので広告ホストへ能動的に接続することもありません。画像読み込みの GET に本文を載せる、といった実装も存在しません。</dd>
+
+      <dt><code>font-src 'self' data:</code></dt>
+      <dd>フォントの取得元を自オリジンと <code>data:</code> に限ります。Google Fonts のような外部フォントは読み込みません。外部フォントは「どのページを見たか」を第三者に伝えてしまうことがありますが、その経路自体を断っています。</dd>
+
+      <dt><code>frame-ancestors 'none'</code></dt>
+      <dd>本サイトを <code>&lt;iframe&gt;</code> などで他サイトに埋め込むことを禁じます。クリックジャッキングや、埋め込み元からの入力の盗み取りを防ぎます。後述の <code>X-Frame-Options: DENY</code> と意味が重なりますが、CSP 側のほうが新しく、より細かく制御できます。</dd>
+
+      <dt><code>base-uri 'self'</code></dt>
+      <dd><code>&lt;base&gt;</code> 要素で基準 URL を書き換えることを、自オリジンに限ります。注入された <code>&lt;base&gt;</code> で相対 URL の解決先を外部にすり替え、スクリプトやフォームの送り先を乗っ取る、という攻撃を封じます。</dd>
+
+      <dt><code>form-action 'self'</code></dt>
+      <dd>フォームの送信先を自オリジンに限ります。もっとも本サイトはそもそも <code>&lt;form&gt;</code> を持たず（変換は <code>&lt;button type="button"&gt;</code> と JS のハンドラーで処理しています）、入力した本文がフォーム送信で外へ飛ぶ経路は二重に存在しません。</dd>
+    </dl>
+
+    <p>あわせて、次のレスポンスヘッダも付けています。</p>
+    <ul class="pv-ul">
+      <li><code>Strict-Transport-Security</code>（HSTS。<code>max-age</code> 1年・<code>includeSubDomains</code>・<code>preload</code>） — これ以降の接続を HTTPS に強制し、平文へのダウングレードを防ぎます。万一どこかで本文が通信に乗ることがあっても経路は暗号化されます（実際には送信そのものがありません）。</li>
+      <li><code>X-Frame-Options: DENY</code> — 古いブラウザ向けのフレーム埋め込み拒否。<code>frame-ancestors</code> の後方互換です。</li>
+      <li><code>X-Content-Type-Options: nosniff</code> — MIME スニッフィングを禁じ、リソースの種類を取り違えて実行してしまうのを防ぎます。</li>
+      <li><code>Referrer-Policy: strict-origin-when-cross-origin</code> — 外部へ移動するときに送るリファラを切り詰め、どこを見ていたかが漏れるのを抑えます。</li>
+      <li><code>Permissions-Policy: camera=(), microphone=(), geolocation=()</code> — カメラ・マイク・位置情報の API をまるごと無効化します。このツールに要らない権限を残さず、攻撃の入口を減らします。</li>
+    </ul>
+    <p class="pv-aside pv-aside--note">
+      一点だけ補足を。<code>_headers</code> は Cloudflare Pages がレスポンスに付けてくれる仕組みなので、本番で実際に適用されるかどうかは<b>配信環境側の責任</b>で、コードだけでは断言できません。コードの側で確実に言えるのは、ポリシーが正しく定義されていて、ビルド成果物にも同じ内容で出力されている、というところまでです。実際に効いているかは、配信後に先ほどの方法（レスポンスヘッダの確認）で照らし合わせられます。
+    </p>
+  </section>
+
+  <!-- 06 二重防壁 -->
+  <section class="pv-section">
+    <p class="section-label">// 06 — Same-origin policy × CSP</p>
+    <h2 class="section-heading">二重防壁：オリジン境界とCSPは別の層で効く</h2>
+    <p>
+      送信が起きないことは、性質の違う二つの仕組みで支えられています。よく混同されるので、分けて説明します。
+    </p>
+    <p>
+      一つめは、ブラウザの<b>同一オリジンポリシー（SOP）</b>と CORS です。これは「どの応答をスクリプトが読めるか」を決める標準の仕組みで、クロスオリジンの読み取りを原則として禁じます。ただし SOP が縛るのは主に <b>読み取り</b>のほうで、送信（とくに <code>no-cors</code> の単純リクエストやビーコン）は完全には縛りません。だから SOP だけでは「外に出さない」の証明には足りません。
+    </p>
+    <p>
+      二つめが、<b>CSP の <code>connect-src</code></b> です。これは「どこへ<b>接続</b>してよいか」を出口の側で縛ります。<code>'self'</code> を指定しているので、応答が読めるかどうか以前に、自オリジン以外への接続要求そのものがブラウザに拒否されます。SOP が読み取りの壁なら、<code>connect-src</code> は<b>送信の壁</b>です。
+    </p>
+    <p>
+      この二つは独立していて、片方をすり抜けてももう片方が残ります。さらにその手前で、そもそもアプリのコードに送信の命令がありません（03）。<b>「命令がない」→「接続が拒否される」→「読み取りも禁じられる」</b>の三段で、外への送信は重ねて塞がれています。どこか一点が破られたら終わり、という作りにはなっていません。
+    </p>
+  </section>
+
+  <!-- 07 textContent / XSS -->
+  <section class="pv-section">
+    <p class="section-label">// 07 — textContent over innerHTML</p>
+    <h2 class="section-heading">なぜ <code>innerHTML</code> を使わないかが効く</h2>
+    <p>
+      変換結果を表示するときは <code>textContent</code> だけを使い、<code>innerHTML</code> は使いません。これは見た目の好みではなく、<b>注入を防ぐ</b>ための判断です。
+    </p>
+    <p>
+      入力本文には、ユーザーが書いた任意の文字列が入ります。<code>&lt;script&gt;</code> や <code>&lt;img onerror=...&gt;</code> のような断片が混じることもあります。これを <code>innerHTML</code> に流し込むと、ブラウザは文字列を <b>HTML として解釈</b>してしまい、注入されたタグやイベントハンドラーが動いてしまうことがあります。これが DOM-based XSS の典型的な入口です。XSS が成立すれば、攻撃用のスクリプトがページの中で動き、本文を読み出して外へ送る、という役回りができてしまう——機密性の前提が崩れます。
+    </p>
+    <p>
+      <code>textContent</code> は、文字列を<b>必ずプレーンテキストとして</b>差し込みます。<code>&lt;</code> や <code>&gt;</code> はタグではなく、ただの文字として表示されるだけで、タグもハンドラーも動きません。入力に何が入っていようと、テキストとして描かれるだけです。
+    </p>
+    <p>
+      この選び方は、<code>script-src 'self'</code>（インライン実行の禁止）と補い合います。仮に注入の経路があっても CSP が実行を止めますし、そもそも <code>textContent</code> が注入の経路を作りません。<b>入口を塞ぐ実装</b>と<b>実行を止めるポリシー</b>の二段で、XSS で本文が漏れる筋道を断っています。
+    </p>
+  </section>
+
+  <!-- 08 ストレージ不在 -->
+  <section class="pv-section">
+    <p class="section-label">// 08 — No persistence</p>
+    <h2 class="section-heading">永続化しない：履歴は残らない</h2>
+    <p>
+      送信を断っても、ローカルにため込んでいれば、あとで漏れる余地が残ります。そこで本ツールは、<b>ブラウザのどんな保存領域にも本文を書き込みません</b>。<code>localStorage</code> / <code>sessionStorage</code> / <code>IndexedDB</code> / <code>document.cookie</code> / Cache API / <code>window.name</code> への書き込みを片っ端から検索した結果、ソースでも配信バンドルでも <b>ゼロ件</b>でした。
+    </p>
+    <p>
+      その結果、変換した本文はセッションのメモリ上にしか存在せず、タブを閉じれば消えます。変換履歴という形で端末に残ることもありません。共有のパソコンや貸し出し端末でも、あとから使った人が前の本文を掘り出す経路がない、ということです。Cookie も発行しないので、トラッキング用の識別子も生まれません。
+    </p>
+  </section>
+
+  <!-- 09 サプライチェーン -->
+  <section class="pv-section">
+    <p class="section-label">// 09 — Zero runtime dependencies</p>
+    <h2 class="section-heading">ランタイム依存ゼロ：サプライチェーン面を畳む</h2>
+    <p>
+      送信がなくても、第三者のライブラリが紛れ込めば、そのコードが何をするかはまた別の問題になります。最近の脅威でいえば、正規のパッケージが乗っ取られたり、悪意のあるアップデートが配られたりする <b>サプライチェーン攻撃</b>です。本ツールは、この面を構造から小さくしています。
+    </p>
+    <p>
+      <code>package.json</code> の依存は <code>vite</code> と <code>vitest</code> の <b>devDependencies だけ</b>です。これらはビルドとテストの段階でしか使われず、<b>配信される本番バンドルには第三者のランタイムコードが入りません</b>。出荷される JS は、自分たちの <code>src/</code> 由来のコードだけでできています。つまり本番でユーザーのブラウザ上を動くコードに、外部由来の実行コードが存在しないということです。
+    </p>
+    <p>
+      これは「依存を信頼する」のではなく「<b>本番に依存を持ち込まない</b>」という構えです。信頼しなければならない第三者がゼロなら、その誰かが侵害されるリスクもゼロになります。点検すべき対象は、自分たちのコードの範囲に収まります。
+    </p>
+  </section>
+
+  <!-- 10 外部要素の開示 -->
+  <section class="pv-section">
+    <p class="section-label">// 10 — Honest disclosure</p>
+    <h2 class="section-heading">正直に開示する、本文とは無関係な外部要素</h2>
+    <p>
+      「本文を送らない」ことと、「ウェブサイトとして外部要素がまったくない」ことは別です。後者を装うと、文書全体がかえって信用できなくなります。本文の機密性とは層が違う外部要素を、隠さずに挙げておきます。<b>どれも入力本文にはアクセスできません。</b>
+    </p>
+    <div class="layer2-grid">
+      <div class="layer2-item">
+        <h3>ホスティングのアクセスログ</h3>
+        <p>
+          本サイトは Cloudflare Pages で静的に配信されます。ウェブサイトである以上、配信事業者がリクエストごとに IP・User-Agent・日時・取得したパスなどを <b>インフラ層のログ</b>として記録することはあり得ます。これはどんなウェブサイトにも共通する仕組みで、アプリのコードには現れません（コードからは、あるともないとも言えない層です）。
+        </p>
+        <p class="layer2-note">
+          ただし本文は<b>リクエストに乗りません</b>（送信していないので）。だからこのログに本文が含まれることはありません。記録されうるのは「接続があった」という事実だけで、「何を変換したか」ではありません。
+        </p>
+      </div>
+      <div class="layer2-item">
+        <h3>アフィリエイト広告（A8.net）</h3>
+        <p>
+          運営費のために、将来 A8.net のバナーを載せることがあります。載せたとしても、CSP は広告に <b>画像の表示（<code>img-src</code>）だけ</b>を許し、<code>script-src 'self'</code> が広告由来の JS を、<code>connect-src 'self'</code> が広告ホストへの接続を止めます。広告がページ内のコードを動かしたり、入力欄に触れたりする経路は、ポリシー上ありません。
+        </p>
+        <p class="layer2-note">
+          今のところ広告タグは置いておらず、表示枠（プレースホルダ）だけがあります。Cookie などが使われるとしても、それは広告画像の配信に伴うもので、本文とは関係ありません。
+        </p>
+      </div>
+    </div>
+    <p class="layer2-closing">
+      この層をあえて開示するのは、前半の話を強くするためです。隠す必要のある部分がないからこそ、本文については「出ない」と言い切れます。
+    </p>
+  </section>
+
+  <!-- まとめ -->
+  <section class="pv-section pv-section--summary">
+    <p class="section-label">// Summary</p>
+    <h2 class="section-heading">結論</h2>
+    <ul class="summary-list">
+      <li><b>送信の経路がない（コードの層）</b>：ソースに送信のための命令がゼロ件。本文は <code>textarea → 純粋な関数 → textContent</code> で完結します。</li>
+      <li><b>成果物が透明（ビルドの層）</b>：バンドルにある唯一の <code>fetch</code> は Vite のプリロードポリフィルで、宛先は自オリジン限定、しかも今回のビルドでは実行されない死コードです。</li>
+      <li><b>出口を塞ぐ（ブラウザの層）</b>：<code>connect-src 'self'</code> が外部接続を拒否します。同一オリジンポリシーと合わせて二重に塞がっています。</li>
+      <li><b>注入に強い</b>：<code>textContent</code> だけを使い、<code>script-src 'self'</code> と合わせて DOM-based XSS で漏れる筋道を断っています。</li>
+      <li><b>保存しない</b>：どの保存領域にも本文を書き込みません。履歴も識別子も残しません。</li>
+      <li><b>攻撃の入口が少ない</b>：ランタイム依存ゼロ。本番に第三者の実行コードがありません。</li>
+      <li><b>正直に開示</b>：ホスティングのログや広告は外部要素として存在し得ますが、本文にはアクセスできません。</li>
+    </ul>
+    <div class="pv-signature">
+      <span class="dot"></span>
+      <span>Zero egress. Zero tracking. Zero cookies. Verifiable in your browser.</span>
+    </div>
+  </section>
+
+  <!-- コードが分からない人向けの注釈 -->
+  <section class="pv-section pv-section--plain">
+    <p class="section-label">// 注釈 — コードに詳しくない方へ</p>
+    <h2 class="section-heading">ここまでを、ひと言で</h2>
+    <p>
+      技術的な話が続きました。コードに馴染みのない方のために、要点だけ、ふだんの言葉で言い換えておきます。
+    </p>
+    <ul class="pv-plain-list">
+      <li><b>あなたが入力した小説は、あなたのパソコンやスマホの中だけで変換されます。</b>インターネットのどこか（運営のサーバーなど）に送られることはありません。</li>
+      <li>送られない理由は、「送らないと約束しているから」ではありません。<b>そもそも送るための仕組みが、プログラムに作られていない</b>からです。約束よりも確実です。</li>
+      <li>変換した文章は、<b>その場限り</b>です。ページを閉じれば消えます。履歴として残らないので、共用のパソコンでも安心して使えます。</li>
+      <li>会員登録もメールアドレスも要りません。あなたが誰なのかを記録する仕組み（Cookie など）も使っていません。</li>
+      <li>もし不安なら、自分で確かめる方法があります。本ツールのページでキーボードの <b>F12</b> を押すと出てくる画面の「Network（ネットワーク）」を見ながら変換してみてください。<b>通信が一度も起きない</b>こと自体が、文章がどこにも送られていない証拠になります。</li>
+    </ul>
+    <p class="pv-plain-close">
+      ひとことで言えば——<b>あなたの原稿は、この画面の外に出ません。</b>上の技術的な説明は、その事実を隅々まで裏づけているだけです。
+    </p>
+  </section>
+
+  <section class="pv-section pv-section--contact">
+    <p class="section-label">// Contact</p>
+    <p>
+      このポリシーや実装についての問い合わせは、運営（<a href="https://takeyabustudio.github.io/" target="_blank" rel="noopener noreferrer">Takeyabu Studio</a>）まで。るびこんは MIT ライセンスのオープンソースで、ここに書いたことはすべて誰でも確かめられます。
+    </p>
+    <p class="pv-updated">最終更新：2026年6月</p>
+  </section>
+
+</main>
+
+<!-- ============================================ Footer ============================================ -->
+<footer class="site-footer">
+  <div class="container-narrow footer-inner">
+    <div class="footer-meta">© 2026 Takeyabu Studio · MIT License</div>
+    <div class="footer-links">
+      <a href="/about/">About</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/faq/">FAQ</a>
+      <a href="https://github.com/takeyabustudio/rubicon" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

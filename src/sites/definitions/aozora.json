@@ -1,0 +1,10 @@
+{
+  "id": "aozora",
+  "name": "青空文庫",
+  "url": "https://www.aozora.gr.jp/",
+  "ruby": { "parse": ["general", "abbrev"], "render": "general" },
+  "bouten": { "parse": ["bouten_aozora"], "render": "bouten_aozora" },
+  "indent": "aozora",
+  "options": { "pipe": "fullwidth" },
+  "_note": "NOTATION §3.7: ルビ・傍点(開始/終了型)・字下げ(1行/ブロック)フル対応。傍点入力は前方参照型も前処理で受理。"
+}

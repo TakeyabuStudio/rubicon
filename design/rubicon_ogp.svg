@@ -1,0 +1,65 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景: 漆黒 -->
+  <rect width="1200" height="630" fill="#0A0A0B"/>
+
+  <!-- 微妙な枠線でカード感 -->
+  <rect x="1" y="1" width="1198" height="628" fill="none" stroke="#2A2A2E" stroke-width="2"/>
+
+  <!-- ====== 左: 本のシンボル (icon-512から流用・拡大) ====== -->
+  <g transform="translate(150, 145) scale(0.66)">
+    <!-- 左ページ -->
+    <path d="M 112 176 L 248 208 L 248 384 L 112 352 Z"
+          fill="none" stroke="#2DD4BF" stroke-width="20" stroke-linejoin="round"/>
+    <!-- 右ページ -->
+    <path d="M 400 176 L 264 208 L 264 384 L 400 352 Z"
+          fill="none" stroke="#2DD4BF" stroke-width="20" stroke-linejoin="round"/>
+    <!-- 中央の背 -->
+    <line x1="256" y1="208" x2="256" y2="384" stroke="#2DD4BF" stroke-width="16"/>
+    <!-- 左ページの文字行 -->
+    <line x1="144" y1="240" x2="224" y2="258.4" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+    <line x1="144" y1="272" x2="224" y2="290.4" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+    <line x1="144" y1="304" x2="192" y2="315" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+    <!-- 右ページの文字行 -->
+    <line x1="368" y1="240" x2="288" y2="258.4" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+    <line x1="368" y1="272" x2="288" y2="290.4" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+    <line x1="368" y1="304" x2="320" y2="315" stroke="#2DD4BF" stroke-width="12" stroke-linecap="round" opacity="0.75"/>
+  </g>
+
+  <!-- ====== 右: テキスト群 ====== -->
+  <!-- メインタイトル 日本語 -->
+  <text x="560" y="250"
+        font-family="Noto Sans CJK JP, sans-serif"
+        font-size="110" font-weight="900"
+        fill="#FFFFFF" letter-spacing="6">るびこん</text>
+
+  <!-- サブタイトル 英字 -->
+  <text x="564" y="320"
+        font-family="Noto Sans CJK JP, sans-serif"
+        font-size="46" font-weight="700"
+        fill="#2DD4BF" letter-spacing="8">RUBICON</text>
+
+  <!-- タグライン -->
+  <text x="565" y="395"
+        font-family="Noto Sans CJK JP, sans-serif"
+        font-size="29" font-weight="500"
+        fill="#E8E8EA">小説投稿サイトのルビ・傍点記法を相互変換</text>
+
+  <!-- 28サイト対応 バッジ -->
+  <rect x="565" y="430" width="290" height="62" rx="31" fill="none" stroke="#2DD4BF" stroke-width="2.5"/>
+  <text x="710" y="471"
+        font-family="Noto Sans CJK JP, sans-serif"
+        font-size="34" font-weight="700"
+        fill="#2DD4BF" text-anchor="middle">28サイト対応</text>
+
+  <!-- 下部: 特徴 -->
+  <text x="565" y="545"
+        font-family="Noto Sans CJK JP, sans-serif"
+        font-size="23" font-weight="400"
+        fill="#8A8A92">完全無料 · 登録不要 · ブラウザ内で完結（データ送信ゼロ）</text>
+
+  <!-- 右下: スタジオ名 -->
+  <text x="1050" y="600"
+        font-family="Noto Sans CJK JP, sans-serif"
+        font-size="22" font-weight="500"
+        fill="#5A5A62" text-anchor="end">Takeyabu Studio</text>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "id": "note",
+  "name": "note",
+  "url": "https://note.com/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" },
+  "_note": "NOTATION §2.1 #19: 見出し行のルビ誤爆に注意(投稿側の留意点)。"
+}

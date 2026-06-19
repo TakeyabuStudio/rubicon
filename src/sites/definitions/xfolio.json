@@ -1,0 +1,10 @@
+{
+  "id": "xfolio",
+  "name": "Xfolio",
+  "url": "https://xfolio.jp/",
+  "ruby": { "parse": ["pixiv"], "render": "pixiv" },
+  "bouten": { "parse": ["bouten_pixiv"], "render": "bouten_pixiv" },
+  "indent": "spaces",
+  "options": {},
+  "_note": "NOTATION §2.2 #23: pixiv 準拠。"
+}

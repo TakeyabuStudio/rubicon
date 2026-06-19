@@ -1,0 +1,10 @@
+{
+  "id": "privatter",
+  "name": "Privatter",
+  "url": "https://privatter.net/",
+  "ruby": { "parse": ["html"], "render": "html" },
+  "bouten": null,
+  "indent": "spaces",
+  "options": {},
+  "_note": "NOTATION §2.2 #22: ルビは公式取説でHTMLルビ(継続)。傍点は公式の専用記法を一次情報で確認できず無効化(2026-06調査)。"
+}

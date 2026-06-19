@@ -1,0 +1,10 @@
+{
+  "id": "noichigo",
+  "name": "野いちご",
+  "url": "https://no-ichigo.jp/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" },
+  "_note": "NOTATION §2.1 #15: Web版記法で実装。アプリ版は表記が異なる。"
+}

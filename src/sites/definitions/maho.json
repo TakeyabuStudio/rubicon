@@ -1,0 +1,10 @@
+{
+  "id": "maho",
+  "name": "魔法のiらんど",
+  "url": "https://maho.jp/",
+  "ruby": { "parse": ["maho"], "render": "maho" },
+  "bouten": null,
+  "indent": "spaces",
+  "options": {},
+  "_note": "NOTATION §2.1 #13: 独自記法 maho(_親文字@ルビ_)でルビは対応(継続)。傍点はルビ記法自体がHTMLタグ依存で不確実なため無効化(2026-06調査)。"
+}

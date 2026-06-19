@@ -1,0 +1,9 @@
+{
+  "id": "kakuyomu",
+  "name": "カクヨム",
+  "url": "https://kakuyomu.jp/",
+  "ruby": { "parse": ["general", "abbrev"], "render": "general" },
+  "bouten": { "parse": ["bouten_double"], "render": "bouten_double" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" }
+}

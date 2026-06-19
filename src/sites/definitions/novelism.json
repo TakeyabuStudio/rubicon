@@ -1,0 +1,9 @@
+{
+  "id": "novelism",
+  "name": "ノベリズム",
+  "url": "https://novelism.jp/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "alphapolis",
+  "name": "アルファポリス",
+  "url": "https://www.alphapolis.co.jp/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_double"], "render": "bouten_double" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" },
+  "_note": "NOTATION §2.1 #3: 縦棒必須・略記ルビ非対応のため abbrev を含めない。旧独自 #親文字__ルビ__# は現在も受理されるが MVP では未対応(TODO)。"
+}

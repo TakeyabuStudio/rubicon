@@ -1,0 +1,10 @@
+{
+  "id": "berrys",
+  "name": "ベリーズカフェ",
+  "url": "https://www.berrys-cafe.jp/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" },
+  "_note": "NOTATION §2.1 #16: 野いちご系・同一記法。Web版記法で実装。"
+}

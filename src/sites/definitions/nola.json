@@ -1,0 +1,9 @@
+{
+  "id": "nola",
+  "name": "Nolaノベル",
+  "url": "https://nola-novel.com/",
+  "ruby": { "parse": ["general"], "render": "general" },
+  "bouten": { "parse": ["bouten_ruby"], "render": "bouten_ruby" },
+  "indent": "spaces",
+  "options": { "pipe": "fullwidth" }
+}

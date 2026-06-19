@@ -1,0 +1,10 @@
+{
+  "id": "markdown",
+  "name": "Markdown",
+  "url": "https://conv.denshochan.com/markdown",
+  "ruby": { "parse": ["denden"], "render": "denden" },
+  "bouten": null,
+  "indent": "spaces",
+  "options": {},
+  "_note": "NOTATION §2.3 #28 / §3.5訂正: でんでん式拡張ルビ {親|ルビ} は対応(継続)。傍点は素のMarkdownに概念が存在せず(*..*は強調であって傍点ではない)無効化(2026-06調査)。でんでんコンバーター(#26)とは別物。"
+}
