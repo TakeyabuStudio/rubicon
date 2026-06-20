@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rubicon.pages.dev/sitemap.xml
+Sitemap: https://rubicon-b35.pages.dev/sitemap.xml
