@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * るびこん ビルド設定。
- * - 配信: Cloudflare Pages のサブドメイン rubicon.pages.dev（ルート運用）。
+ * - 配信: Cloudflare Pages のサブドメイン rubicon-b35.pages.dev（ルート運用）。
  *   そのため base は '/'（既定）。`/rubicon/` プレフィックスは使わない。
  * - セキュリティヘッダ(CSP等)は public/_headers で Cloudflare Pages 側が付与する。
  * - MPA構成: 各HTMLページを rollupOptions.input に列挙する。

@@ -6,17 +6,17 @@
 <title>プライバシーと脅威モデル | るびこん — 本文は端末の外に出ない、その証明</title>
 <meta name="description" content="るびこんは入力された小説本文をネットワークへ送信しません。送信しないのではなく、送信する経路がコード・ビルド成果物・CSP の三層で存在しないことを、検証できる技術的な事実として、一つずつ示します。" />
 <meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://rubicon.pages.dev/privacy/" />
+<link rel="canonical" href="https://rubicon-b35.pages.dev/privacy/" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" href="/icon-512.svg" />
 
 <meta property="og:type" content="article" />
 <meta property="og:title" content="プライバシーと脅威モデル | るびこん" />
 <meta property="og:description" content="本文は端末の外に出ない。その経路がコード・ビルド成果物・CSP の三層で存在しないことを一つずつ確かめます。" />
-<meta property="og:url" content="https://rubicon.pages.dev/privacy/" />
-<meta property="og:image" content="https://rubicon.pages.dev/ogp.png" />
+<meta property="og:url" content="https://rubicon-b35.pages.dev/privacy/" />
+<meta property="og:image" content="https://rubicon-b35.pages.dev/ogp.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://rubicon.pages.dev/ogp.png" />
+<meta name="twitter:image" content="https://rubicon-b35.pages.dev/ogp.png" />
 
 <link rel="stylesheet" href="/src/styles/tokens.css" />
 <link rel="stylesheet" href="/src/styles/main.css" />
@@ -75,7 +75,7 @@
       この文書の結論は、読む前に自分で確かめられます。手順はごく単純です。本サイトを開き、開発者ツール（<kbd>F12</kbd>、または <kbd>Ctrl/Cmd</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>）の <b>Network</b> パネルを開いたまま、本文を貼り付けて変換してみてください。
     </p>
     <p>
-      変換しても、ネットワークリクエストは <b>一本も発生しません</b>。XHR も Fetch も WebSocket も、ビーコンも、画像の GET によるピングも記録されません。もう一歩踏み込むなら、<b>Console</b> で <code>performance.getEntriesByType('resource')</code> を実行すると、ページが読み込んだリソースの URL が全部並びます。そこに自オリジン（<code>rubicon.pages.dev</code>）以外の宛先は出てきません。
+      変換しても、ネットワークリクエストは <b>一本も発生しません</b>。XHR も Fetch も WebSocket も、ビーコンも、画像の GET によるピングも記録されません。もう一歩踏み込むなら、<b>Console</b> で <code>performance.getEntriesByType('resource')</code> を実行すると、ページが読み込んだリソースの URL が全部並びます。そこに自オリジン（<code>rubicon-b35.pages.dev</code>）以外の宛先は出てきません。
     </p>
     <p class="pv-aside">
       この先は、<b>なぜそうなるのか</b>をコードのレベルまで分解した説明です。先に検証結果（通信ゼロ）があって、あとはその仕組みを追っていくだけ。この順序には意味があります——結論は実際に観測できる事実であって、こちらの言い分を信じてもらう必要がないからです。
