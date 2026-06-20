@@ -665,7 +665,8 @@ body {
    ============================================ */
 .ads-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 520px);
+  justify-content: center;
   gap: var(--space-md);
 }
 
@@ -675,6 +676,11 @@ body {
   border-radius: var(--radius-md);
   padding: var(--space-md);
   text-align: center;
+}
+
+.ad-card img {
+  max-width: 100%;
+  height: auto;
 }
 
 .ad-label {
