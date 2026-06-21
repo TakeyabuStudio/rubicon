@@ -4,7 +4,7 @@ WEB小説投稿サイト **28形式** のルビ・傍点・字下げ・空白記
 
 - 公開: https://rubicon-b35.pages.dev/
 - ライセンス: MIT
-- 運営: [Takeyabu Studio](https://takeyabustudio.github.io/)
+- 運営: [Takeyabu Studio](https://takeyabu-studio.pages.dev/)
 
 ## プライバシー保証（データ送信ゼロ）
 
